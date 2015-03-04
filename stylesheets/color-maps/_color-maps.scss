@@ -1,0 +1,122 @@
+//
+// Main module for the system.
+//
+
+
+// Import the global variables needed by all of Color Maps.
+@import "./variables";
+// Import the helper functions.
+@import "./kss";
+
+
+// color($key, [$scheme])
+//
+// Returns a color value given a key word and optional color scheme. If the
+// named color is not in the given color scheme, the "default" color scheme will
+// be searched.
+//
+// Usage:
+// ```scss
+// .ex {
+//   background-color: color(body-bg);
+//   border: 1px solid color(border, 'grace');
+// }
+// ```
+//
+// $key     - The name of the requested color.
+// $scheme  - Optional color scheme to choose from; defaults to `$color-maps-default-scheme`.
+//
+// Style guide: sass.functions.color
+@function color($key, $scheme: $color-maps-default-scheme) {
+  @if map-has-key($color-maps, $scheme) and map-has-key(map-get($color-maps, $scheme), 'names') and map-has-key(map-get(map-get($color-maps, $scheme), 'names'), $key) {
+    @return map-get(map-get(map-get($color-maps, $scheme), 'names'), $key);
+  } @else if map-has-key(map-get(map-get($color-maps, 'default'), 'names'), $key) {
+    @return map-get(map-get(map-get($color-maps, 'default'), 'names'), $key);
+  } @else {
+    @error 'The color "#{$key}" was not found in $color-maps map.';
+  }
+}
+
+// add-color-scheme($scheme, $description, $new-colors)
+//
+// Sets the colors for a new color scheme.
+//
+// Usage:
+// ```scss
+// $my-colors: add-color-scheme('design', 'Colors used by different parts of the design.', (
+//  link:             color(blue),
+//  link-visited:     color(blue-dark),
+//  link-focus:       color(red),
+// ));
+// ```
+//
+// $scheme      - The name of the new color scheme.
+// $description - A description of the color scheme.
+// $new-colors  - A Sass map containing the new colors.
+//
+// Style guide: sass.functions.color.add-color-scheme
+@function add-color-scheme($scheme, $description: '', $new-colors: ()) {
+  $color-maps: map-merge(
+    $color-maps,
+    ($scheme: (
+      'description': $description,
+      'names': $new-colors
+    ))
+  );
+  @return $color-maps;
+}
+
+// add-colors($scheme, $new-colors)
+//
+// Add the colors to an existing color scheme.
+//
+// Usage:
+// ```scss
+// $my-colors: add-colors('design', (
+//  nav:             color(link),
+//  nav-visited:     color(link-visited),
+//  nav-focus:       color(link-focus),
+// ));
+// ```
+//
+// $scheme      - The name of an existing color scheme.
+// $new-colors  - A Sass map containing the new colors.
+//
+// Style guide: sass.functions.color.add-color-scheme
+@function add-colors($scheme, $new-colors) {
+  @if not map-has-key($color-maps, $scheme) {
+    @error 'The color scheme "#{$scheme}" was not found in $color-maps map.';
+  }
+  $color-maps: map-merge(
+    $color-maps,
+    ($scheme: map-merge(
+      map-get($color-maps, $scheme),
+      ('names': map-merge(
+        map-get(map-get($color-maps, $scheme), 'names'),
+        $new-colors
+      ))
+    ))
+  );
+  @return $color-maps;
+}
+
+// add-default-color-scheme($description, $new-colors)
+//
+// Sets the default scheme.
+//
+// Usage:
+// ```scss
+// $my-colors: add-default-color-scheme('The main colors of the site.', (
+//   white:            #fff,
+//   grey-dark:        #545d5d,
+//   blue:             #008fbf,
+// ));
+// ```
+//
+// $description - A description of the default color scheme.
+// $new-colors  - A Sass map containing the new colors.
+//
+// Style guide: sass.functions.color.add-default-color-scheme
+@function add-default-color-scheme($description, $new-colors) {
+  @return add-color-scheme('default', $description, $new-colors);
+}

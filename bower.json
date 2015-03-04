@@ -1,0 +1,22 @@
+{
+  "name"        : "color-maps",
+  "version"     : "1.0.0-alpha.1",
+  "homepage"    : "http://github.com/JohnAlbin/color-maps",
+  "author"      : ["John Albin Wilkins"],
+  "description" : "Color Maps is a thing.",
+  "main"        : [
+    "_color-maps.scss"
+  ],
+  "keywords"    : [
+    "Sass",
+    "colors"
+  ],
+  "license"     : "GPLv2",
+  "ignore"      : [
+    "color-maps.gemspec",
+    "sache.json",
+    "lib",
+    "templates",
+    "tests"
+  ]
+}

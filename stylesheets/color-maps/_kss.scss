@@ -1,0 +1,68 @@
+//
+// "KSS" module for the system.
+//
+
+
+@import "./variables";
+
+
+// kss-color-markup()
+//
+// Returns the HTML needed to display all colors in color() in a KSS style
+// guide. The parameters are used to specifiy the classes for various elements.
+//
+// Usage:
+// ```scss
+// @import 'init';
+//
+// /*
+// #{kss-color-markup()}
+// */
+//
+// Then use a Gulp.js or Grunt task to strip the leading and trailing lines
+// (containing "/*" and "*/" respectively) from the generated file.
+//
+// $wrapper-class     - Defaults to 'kss-text'.
+// $title-class       - Defaults to 'kss-color__title'.
+// $description-class - Defaults to 'kss-color__description'.
+// $color-class       - Defaults to 'kss-color'.
+// $swatch-class      - Defaults to 'kss-color__swatch'.
+// $variable-class    - Defaults to 'kss-color__variable'.
+//
+// style guide: sass.functions.color.kss-color-markup
+
+@function kss-color-markup(
+  $wrapper-class:     'kss-style',
+  $title-class:       'kss-color__title',
+  $description-class: 'kss-color__description',
+  $color-class:       'kss-color',
+  $swatch-class:      'kss-color__swatch',
+  $variable-class:    'kss-color__variable'
+) {
+  $markup: '';
+
+  @if $wrapper-class {
+    $markup: '<div class="' + $wrapper-class + '">';
+  }
+
+  @each $scheme, $map in $color-maps {
+    // Display the scheme name and description.
+    $markup: $markup
+      + '<h3 class="' + $title-class + '">#{$scheme}</h3>'
+      + '<p class="' + $description-class + '">#{map-get($map, 'description')}</p>';
+
+    // Display the colors in the scheme.
+    @each $color, $value in map-get($map, 'names') {
+      $markup: $markup
+        + '<div class="' + $color-class + '">'
+        +   '<span class="' + $swatch-class + '" style="background-color: #{$value}"></span>'
+        +   '<code class="' + $variable-class + '">color(#{$color})</code>'
+        + '</div>';
+    }
+  }
+
+  @if $wrapper-class {
+    $markup: $markup + '</div>';
+  }
+  @return $markup;
+}
