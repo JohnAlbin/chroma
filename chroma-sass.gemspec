@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |spec|
-  spec.name         = 'chroma'
+  spec.name         = 'chroma-sass'
 
   spec.summary      = %q{Chorma is the Sass color manager.}
   spec.description  = %q{Chroma is the Sass color manager. Manages color names, variations, and schemes.}
@@ -22,6 +22,6 @@ Gem::Specification.new do |spec|
   spec.files        += %w(
     LICENSE.txt
     README.md
-    chroma.gemspec
+    chroma-sass.gemspec
   )
 end
