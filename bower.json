@@ -1,11 +1,11 @@
 {
-  "name"        : "color-maps",
+  "name"        : "chroma",
   "version"     : "1.0.0-alpha.1",
-  "homepage"    : "http://github.com/JohnAlbin/color-maps",
+  "homepage"    : "http://github.com/JohnAlbin/chroma",
   "author"      : ["John Albin Wilkins"],
-  "description" : "Color Maps is a thing.",
+  "description" : "Chroma is the Sass color manager.",
   "main"        : [
-    "_color-maps.scss"
+    "_chroma.scss"
   ],
   "keywords"    : [
     "Sass",
@@ -13,10 +13,9 @@
   ],
   "license"     : "GPLv2",
   "ignore"      : [
-    "color-maps.gemspec",
+    "chroma.gemspec",
     "sache.json",
     "lib",
-    "templates",
     "tests"
   ]
 }

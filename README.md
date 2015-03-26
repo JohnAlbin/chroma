@@ -1,33 +1,41 @@
-# About Color Maps
+# About Chroma
 
-It's a thing.
+WARNING: This is alpha-quality software, so the API is guaranteed to change. But you can always pin your Gemfile to the specific version number you are using.
+
+Chroma is a Sass library that manages a project's color names, color variations, and color schemes.
 
 ## USAGE
 
-Here's a simple example: a content column with a sidebar on each side, aligned to a 12 column grid.
-
 ```scss
-  @import "color-maps";
+@import "chroma";
 ```
+
+Until the API settles down, you'll need to look in sass/chroma/_functions.scss to see how to use it.
 
 ## INSTALLATION
 
-Color Maps is distributed as a Ruby Gem. On your computer, simply run:
+Chroma is distributed as a Ruby Gem. On your computer, simply run:
 
 ```sh
-gem install color-maps
+gem install chroma
 ```
 
-If you are using Compass (and you should!) then you can add it to an existing project by editing the project's configuration file, config.rb, and adding this line:
+If you are using Bundler (and you should!) then you can add it to an existing project by editing the project's Gemfile and adding this line:
 
 ```ruby
-require 'color-maps'
+gem 'chroma',           '~> 1.0.0-alpha.1'
 ```
 
-You can then start using Color Maps in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
+If you are using Compass, edit your project's config.rb and add this line:
+
+```ruby
+require 'chroma'
+```
+
+You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
 
 ```scss
-@import "color-maps";
+@import "chroma";
 ```
 
 
@@ -38,6 +46,6 @@ You can then start using Color Maps in your Sass files. Just add this line to on
 
 ## LICENSE
 
-Available under the GPL v2 license. See [LICENSE.txt](https://github.com/JohnAlbin/color-maps/blob/master/LICENSE.txt).
+Available under the GPL v2 license. See [LICENSE.txt](https://github.com/JohnAlbin/chroma/blob/master/LICENSE.txt).
 
-[![Build Status](https://travis-ci.org/JohnAlbin/color-maps.png?branch=master)](https://travis-ci.org/JohnAlbin/color-maps)
+[![Build Status](https://travis-ci.org/JohnAlbin/chroma.png?branch=master)](https://travis-ci.org/JohnAlbin/chroma)

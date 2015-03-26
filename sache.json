@@ -1,5 +1,5 @@
 {
-  "name": "color-maps",
-  "description": "Color Maps is a thing.",
-  "tags": ["colors"]
+  "name": "chroma",
+  "description": "Chroma is the Sass color manager.",
+  "tags": ["colors, design"]
 }
