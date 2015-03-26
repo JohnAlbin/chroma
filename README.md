@@ -29,7 +29,7 @@ gem 'chroma-sass',  '~> 1.0.0.alpha.1'
 If you are using Compass, edit your project's config.rb and add this line:
 
 ```ruby
-require 'chroma-sass'
+require 'chroma'
 ```
 
 You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
