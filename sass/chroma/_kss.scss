@@ -38,6 +38,7 @@
   $color-class:       'chroma-kss',
   $swatch-class:      'chroma-kss__swatch',
   $variable-class:    'chroma-kss__variable',
+  $alt-text-class:    'chroma-kss__alt-text',
   $value-class:       'chroma-kss__value'
 ) {
   $markup: '';
@@ -58,7 +59,8 @@
         + '<div class="' + $color-class + '">'
         +   '<span class="' + $swatch-class + '" style="background-color: #{$value}"></span>'
         +   '<code class="' + $variable-class + '">color(#{$color})</code>'
-        +   ' <span class="' + $value-class + '">&rarr; <code>#{$value}</code></span>'
+        +   ' <span class="' + $alt-text-class + '">uses the color:</span> '
+        +   '<code class="' + $value-class + '">#{$value}</code></span>'
         + '</div>';
     }
   }
