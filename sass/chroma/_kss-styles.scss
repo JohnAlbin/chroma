@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 // Use this stylesheet to add the default design for Chroma color swatches in a
 // KSS style guide.
 
@@ -35,7 +33,9 @@
     color: #bbb;
 
     &:before {
-      content: '→ ';
+      // "\2192" is unicode for right arrow. "\ " is a hack; otherwise space is
+      // ignored in some browsers.
+      content: '\2192\ ';
       font-family: sans-serif;
     }
   }
