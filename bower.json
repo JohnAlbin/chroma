@@ -1,6 +1,6 @@
 {
   "name"        : "chroma",
-  "version"     : "1.0.0-alpha.3",
+  "version"     : "1.0.0-alpha.4",
   "homepage"    : "http://github.com/JohnAlbin/chroma",
   "author"      : ["John Albin Wilkins"],
   "description" : "Chroma is the Sass color manager.",
