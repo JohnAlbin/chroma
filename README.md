@@ -6,11 +6,72 @@ Chroma is a Sass library that manages a project's color names, color variations,
 
 ## USAGE
 
+Betters docs are coming, but here's some documentation in the form of example
+code.
+
 ```scss
 @import "chroma";
-```
 
-Until the API settles down, you'll need to look in sass/chroma/_functions.scss to see how to use it.
+// Define descriptive names of color values.
+$chroma: define-default-color-scheme('The main colors of the site.');
+$chroma: add-colors((
+  white:                  #fff,
+  off-white:              #eaeaea,
+  grey-medium:            #706e6c,
+  black:                  #000,
+
+  blue:                   #0e71b8,
+  blue-dark:              shade(#0e71b8, 25%),
+));
+
+// Create a "functional" color scheme that inherits from the default color scheme.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+
+$chroma: add-colors('functional', (
+  // Have the "text" color use the hex value given to the "black" color. Even
+  // though the "functional" color scheme doesn't define "black", it inherits
+  // from the "default" color scheme where "black" is defined.
+  text:                   'black',
+  text-subdued:           'grey-medium',
+
+  // The primary highlight color.
+  primary:                'blue',
+
+  // Have the link color use the primary color.
+  link:                   'primary',
+  link-active:            'blue-dark',
+
+  site-name:              'primary',
+  heading:                'text',
+));
+
+$chroma: define-color-scheme('alternate', 'Alternate colors for the site.');
+
+$chroma: add-colors('alternate', (
+  red:                    #c00,
+  primary:                'red',
+));
+
+// Set which color scheme should be used by default when calling the color()
+// function.
+$chroma-active-scheme: 'functional';
+
+.example-ruleset {
+  h1 {
+    // Outputs #000.
+    color: color(heading);
+  }
+  a {
+    // Outputs #0e71b8.
+    color: color(link);
+
+    .alternate-site & {
+      // Outputs #c00.
+      color: color(link, alternate);
+    }
+  }
+}
+```
 
 ## INSTALLATION
 
@@ -47,5 +108,3 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 ## LICENSE
 
 Available under the GPL v2 license. See [LICENSE.txt](https://github.com/JohnAlbin/chroma/blob/master/LICENSE.txt).
-
-[![Build Status](https://travis-ci.org/JohnAlbin/chroma.png?branch=master)](https://travis-ci.org/JohnAlbin/chroma)

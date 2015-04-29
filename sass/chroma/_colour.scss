@@ -1,0 +1,132 @@
+//
+// Colour module for Chroma.
+//
+
+// Import the main module of Chroma.
+@import './functions';
+
+// The one true spelling.
+$chroma-spelling  : 'colour';
+
+
+// is-dangerous-colour-keyword($name)
+//
+// Checks if the given name is a colour keyword. Returns false or a string
+// containing the name of the colour keyword.
+//
+// $name - The name of the colour to check.
+//
+// Style guide: colour.is-dangerous-colour-keyword
+@function is-dangerous-colour-keyword($name) {
+  @return is-dangerous-color-keyword($name);
+}
+
+// is-colour-keyword($name)
+//
+// Checks if the given name is a colour keyword. Returns false or a string
+// containing the name of the colour keyword.
+//
+// $name - The name of the colour to check.
+//
+// Style guide: colour.is-colour-keyword
+@function is-colour-keyword($name) {
+  @return is-color-keyword($name);
+}
+
+// colour([$scheme,] $name)
+//
+// Returns a colour value given a key word and optional colour scheme. If the
+// named colour is not in the colour scheme, the colour scheme's parent scheme will
+// be searched.
+//
+// Usage:
+// ```scss
+// .ex {
+//   background-color: colour(body-bg);
+//   border: 1px solid colour(grace, border);
+// }
+// ```
+//
+// $name   - The name of the requested colour.
+// $scheme - Optional colour scheme to choose from; defaults to
+//           `$chroma-active-scheme`.
+//
+// Style guide: colour.colour
+@function colour($scheme, $name: null) {
+  @return color($scheme, $name);
+}
+
+// define-colour-scheme($scheme [, $description] [, $parent])
+//
+// Define a new colour scheme and, optionally, set its description and parent
+// colour scheme.
+//
+// When searching for a colour and the colour scheme does not define that
+// particular colour, the parent colour scheme will be checked to see if it
+// defines that colour.
+//
+// By default, all colour schemes inherit their colours from the default colour
+// scheme. Optionally, a colour scheme can choose to inherit from a different
+// colour scheme by specifying the `$parent` parameter.
+//
+// Usage:
+// ```scss
+// $chroma: define-colour-scheme(taiwan, "Taiwan's colours");
+// $chroma: define-colour-scheme(taipei, "Taipei's colours", $parent: taiwan);
+// ```
+//
+// $scheme      - The name of the new colour scheme.
+// $description - Optional description of the colour scheme.
+// $parent      - The parent colour scheme to inherit colours from; defaults to
+//                `default` (i.e. `$CHROMA_DEFAULT_SCHEME`).
+//
+// Style guide: colour.define-colour-scheme
+@function define-colour-scheme($scheme, $description: '', $parent: $CHROMA_DEFAULT_SCHEME) {
+  @return define-color-scheme($scheme, $description, $parent);
+}
+
+// define-default-colour-scheme($description)
+//
+// Sets the description of the default colour scheme.
+//
+// Usage:
+// ```scss
+// $chroma: define-default-colour-scheme('Default colours');
+// ```
+//
+// $description - Description of the default colour scheme.
+//
+// Style guide: colour.define-default-colour-scheme
+@function define-default-colour-scheme($description) {
+  @return define-color-scheme($CHROMA_DEFAULT_SCHEME, $description);
+}
+
+// add-colours([$scheme,] $colours)
+//
+// Add the colours to an existing colour scheme.
+//
+// Usage:
+// ```scss
+// $my-colours: add-colours('admiral', (
+//  nav:             'link',
+//  nav-visited:     colour(link-visited),
+//  nav-focus:       colour(link-focus),
+// ));
+// ```
+//
+// If you wish to add colours to the active scheme, you can just use:
+// ```scss
+// $my-colours: add-colours((
+//  nav:             'link',
+//  nav-visited:     colour(link-visited),
+//  nav-focus:       colour(link-focus),
+// ));
+// ```
+//
+// $colours  - A Sass map containing the new colours.
+// $scheme  - The name of an existing colour scheme.
+//
+// Style guide: functions.add-colours
+@function add-colours($scheme, $colours: null) {
+  @return add-colors($scheme, $colours);
+}

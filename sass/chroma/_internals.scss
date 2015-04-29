@@ -1,0 +1,87 @@
+//
+// Helper functions that query the internal data structure in $chroma.
+//
+
+// Import the global variables needed by all of Chroma.
+@import './variables';
+
+// chroma-has-scheme($scheme)
+//
+// Checks if the named color scheme exists.
+//
+// Style guide: sass.functions.chroma.chroma-has-scheme
+@function chroma-has-scheme($scheme) {
+  @return map-has-key(map-get($chroma, 'schemes'), $scheme);
+}
+
+// chroma-schemes()
+//
+// Returns a list of all color schemes in $chroma.
+//
+// Style guide: sass.functions.chroma.chroma-schemes
+@function chroma-schemes() {
+  @return map-keys(map-get($chroma, 'schemes'));
+}
+
+// chroma-has-color($name [, $scheme])
+//
+// Checks if the named color exists in the given scheme or its parent schemes.
+// Returns false or a string of the scheme name that contains the color.
+//
+// Style guide: sass.functions.chroma.chroma-has-color
+@function chroma-has-color($name, $scheme: $chroma-active-scheme) {
+  $current-scheme: $scheme;
+  @while $current-scheme {
+    @if map-has-key(map-get($chroma, 'names'), "#{$current-scheme}::#{$name}") {
+      @return $current-scheme;
+    }
+    // Look in the parent scheme.
+    $current-scheme: map-get(map-get(map-get($chroma, 'schemes'), $current-scheme), 'parent');
+  }
+  @return false;
+}
+
+// _chroma-add-name()
+//
+// Private function that adds a color to the data structure of the $chroma
+// variable.
+//
+// No styleguide reference
+@function _chroma-add-name($scheme, $name, $value: false, $reference: false, $referenced_by: ()) {
+  $names: map-merge(
+    map-get($chroma, 'names'),
+    ("#{$scheme}::#{$name}": (
+      value         : $value,
+      reference     : $reference,
+      referenced_by : $referenced_by,
+    ))
+  );
+
+  @return map-merge(
+    $chroma,
+    ('names': $names)
+  );
+}
+
+// _chroma-init()
+//
+// Private function that sets up the initial data structure of the $chroma
+// variable.
+//
+// No styleguide reference
+@function _chroma-init() {
+  @if length($chroma) == 0 {
+    @return (
+      'schemes': (
+        $CHROMA_DEFAULT_SCHEME : (
+          'description': '',
+          'parent': false,
+        ),
+      ),
+      'names': (),
+    );
+  }
+  @else {
+    @return $chroma;
+  }
+}

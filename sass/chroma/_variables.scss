@@ -1,6 +1,48 @@
 //
-// Variables module for the system; auto-imported by other modules.
+// Variables module for Chroma; auto-imported by other modules.
 //
 
-$chroma                 : ()        !default;
-$chroma-default-scheme  : 'default' !default;
+//
+// Private variables.
+//
+
+// The name of the default color scheme. There's no reason to change this value.
+$CHROMA_DEFAULT_SCHEME  : 'default';
+
+// Let the Aussies, etc. have their preferred spelling.
+//
+// Rather than setting this variable directly, users should import the colour
+// module with: `@import 'chroma/colour';`
+$chroma-spelling        : 'color' !default;
+
+//
+// Public variables.
+//
+
+// $chroma
+//
+// The colors and meta-data managed by Chroma.
+//
+// Style guide: variables.chroma
+$chroma                 : () !default;
+
+// $chroma-active-scheme
+//
+// The currently active color scheme. This is the default value used by the
+// $scheme parameter of most Chroma functions.
+//
+// By default, this variable is set to the default color scheme.
+//
+// Style guide: variables.chroma-active-scheme
+$chroma-active-scheme   : $CHROMA_DEFAULT_SCHEME !default;
+
+// $chroma-die-on-ambiguous-keyword
+//
+// Since Chroma _will_ die when using an ambiguous color keyword with Sass'
+// "compressed" output style, we die with all other output styles too.
+// Otherwise, Chroma could behave differently on production vs. development
+// environments. If you are really sure Chroma will never be run with Sass'
+// "compressed" output style, you can disable this feature.
+//
+// Style guide: variables.chroma-die-on-ambiguous-keyword
+$chroma-die-on-ambiguous-keyword  : true !default;
