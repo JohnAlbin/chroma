@@ -12,8 +12,14 @@ $chroma: _chroma-init();
 
 // is-dangerous-color-keyword($name)
 //
-// Checks if the given name is a color keyword. Returns false or a string
-// containing the name of the color keyword.
+// If a real Sass color is given as a color name to Chroma, it is in danger of
+// being converted to a hexadecimal value before Chroma can read the name. And
+// some hex values map to more than one keyword (e.g. gray and grey), so the
+// original name would be irretrievable.
+//
+// Checks if the given name is one of those dangerous color keywords. Returns
+// false or causes the Sass compilation to die with an error message containing
+// the name of the ambiguous color keywords.
 //
 // $name - The name of the color to check.
 //
@@ -428,9 +434,9 @@ $chroma: _chroma-init();
 // }
 // ```
 //
-// $name   - The name of the requested color.
 // $scheme - Optional color scheme to choose from; defaults to
 //           `$chroma-active-scheme`.
+// $name   - The name of the requested color.
 //
 // Style guide: functions.color
 @function color($scheme, $name: null) {
@@ -544,8 +550,9 @@ $chroma: _chroma-init();
 // ));
 // ```
 //
-// $colors  - A Sass map containing the new colors.
-// $scheme  - The name of an existing color scheme.
+// $scheme - Optional: color scheme to add colors to; defaults to
+//           `$chroma-active-scheme`.
+// $colors - A Sass map containing the new colors.
 //
 // Style guide: functions.add-colors
 @function add-colors($scheme, $colors: null) {

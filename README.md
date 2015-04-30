@@ -12,8 +12,10 @@ code.
 ```scss
 @import "chroma";
 
-// Define descriptive names of color values.
-$chroma: define-default-color-scheme('The main colors of the site.');
+// Define the default color scheme.
+$chroma: define-default-color-scheme('Descriptive color names for use in "functional" color names below.');
+
+// Add colors to the default color scheme.
 $chroma: add-colors((
   white:                  #fff,
   off-white:              #eaeaea,
@@ -27,6 +29,7 @@ $chroma: add-colors((
 // Create a "functional" color scheme that inherits from the default color scheme.
 $chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
 
+// Add colors to the functional color scheme.
 $chroma: add-colors('functional', (
   // Have the "text" color use the hex value given to the "black" color. Even
   // though the "functional" color scheme doesn't define "black", it inherits
@@ -45,8 +48,10 @@ $chroma: add-colors('functional', (
   heading:                'text',
 ));
 
-$chroma: define-color-scheme('alternate', 'Alternate colors for the site.');
+// Create an "alternate" color scheme that inherits from the "functional" color scheme.
+$chroma: define-color-scheme('alternate', 'Alternate colors for the site.', 'functional');
 
+// Add colors to the alternate color scheme.
 $chroma: add-colors('alternate', (
   red:                    #c00,
   primary:                'red',
@@ -65,9 +70,12 @@ $chroma-active-scheme: 'functional';
     // Outputs #0e71b8.
     color: color(link);
 
-    .alternate-site & {
+    .alternate-color-section & {
       // Outputs #c00.
       color: color(link, alternate);
+      // @TODO: Whoops! This doesn't work yet because it finds the "link" color
+      // value in the functional color scheme and never sees that the primary
+      // color has changed.
     }
   }
 }
@@ -99,11 +107,9 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 @import "chroma";
 ```
 
-
 ## REQUIREMENTS
 
-* Sass 3.3.0 or later
-
+* Sass 3.4.0 or later
 
 ## LICENSE
 
