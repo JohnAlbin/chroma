@@ -92,7 +92,7 @@ gem install chroma-sass
 If you are using Bundler (and you should!) then you can add it to an existing project by editing the project's Gemfile and adding this line:
 
 ```ruby
-gem 'chroma-sass',  '~> 1.0.0.alpha.4'
+gem 'chroma-sass',  '~> 1.0.0.alpha.5'
 ```
 
 If you are using Compass, edit your project's config.rb and add this line:

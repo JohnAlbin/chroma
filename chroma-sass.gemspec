@@ -9,14 +9,14 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'http://github.com/JohnAlbin/chroma'
   spec.rubyforge_project =
 
-  spec.version      = '1.0.0.alpha.4'
-  spec.date         = '2015-04-14'
+  spec.version      = '1.0.0.alpha.5'
+  spec.date         = '2015-04-30'
   spec.licenses     = ['GPL-2']
 
   spec.authors      = ['John Albin Wilkins']
   spec.email        = 'virtually.johnalbin@gmail.com'
 
-  spec.add_runtime_dependency('sass', "~> 3.3")
+  spec.add_runtime_dependency('sass', "~> 3.4")
 
   spec.files        = `git ls-files`.split($/).select {|f| File.exist?(f) && f =~ %r{^(lib|sass)/} }
   spec.files        += %w(
