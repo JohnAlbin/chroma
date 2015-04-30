@@ -39,7 +39,8 @@
   $swatch-class:      'chroma-kss__swatch',
   $variable-class:    'chroma-kss__variable',
   $alt-text-class:    'chroma-kss__alt-text',
-  $value-class:       'chroma-kss__value'
+  $value-class:       'chroma-kss__value',
+  $reference-class:   'chroma-kss__reference'
 ) {
   $markup: '';
 
@@ -47,21 +48,36 @@
     $markup: '<div class="' + $wrapper-class + '">';
   }
 
-  @each $scheme, $map in $chroma {
+  @each $scheme, $data in map-get($chroma, 'schemes') {
     // Display the scheme name and description.
     $markup: $markup
       + '<h3 class="' + $title-class + '">#{$scheme}</h3>'
-      + '<p class="' + $description-class + '">#{map-get($map, 'description')}</p>';
+      + '<p class="' + $description-class + '">#{map-get($data, 'description')}</p>';
 
     // Display the colors in the scheme.
-    @each $color, $value in map-get($map, 'names') {
-      $markup: $markup
-        + '<div class="' + $color-class + '">'
-        +   '<span class="' + $swatch-class + '" style="background-color: #{$value}"></span>'
-        +   '<code class="' + $variable-class + '">color(#{$color})</code>'
-        +   ' <span class="' + $alt-text-class + '">uses the color:</span> '
-        +   '<code class="' + $value-class + '">#{$value}</code></span>'
-        + '</div>';
+    @each $color, $data in map-get($chroma, 'names') {
+      $seperator: str-index($color, '::');
+      @if $scheme == str-slice($color, 1, $seperator - 1) {
+        $color: str-slice($color, $seperator + 2);
+        $value: map-get($data, 'value');
+        $reference: map-get($data, 'reference');
+        $referenced_by: map-get($data, 'referenced_by');
+
+        $markup: $markup
+          + '<div class="#{$color-class}">'
+          +   '<span class="#{$swatch-class}" style="background-color: #{$value}"></span>'
+          +   '<code class="#{$variable-class}">color(#{$color})</code>'
+          +   ' <span class="#{$alt-text-class}">uses the color:</span> '
+          +   '<span class="#{$value-class}"><code>#{$value}</code>';
+        @if $reference {
+          $markup: $markup + ' (#{$reference})';
+        }
+        $markup: $markup + '</span>';
+        @if length($referenced_by) > 0 {
+          $markup: $markup + ' <span class="#{$reference_class}">This color is inherited by: #{inspect($referenced_by)}</span>'
+        }
+        $markup: $markup + '</div>';
+      }
     }
   }
 

@@ -32,11 +32,24 @@
   &__value {
     color: #bbb;
 
+    code {
+      color: #bbb;
+    }
+
     &:before {
       // "\2192" is unicode for right arrow. "\ " is a hack; otherwise space is
       // ignored in some browsers.
       content: '\2192\ ';
       font-family: sans-serif;
     }
+  }
+
+  &__reference {
+    display: block;
+    position: relative;
+    top: -12px;
+    line-height: 25px;
+    padding-left: 50px;
+    color: #999;
   }
 }
