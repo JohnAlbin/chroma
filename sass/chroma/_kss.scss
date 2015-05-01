@@ -44,10 +44,6 @@
 ) {
   $markup: '';
 
-  @if $wrapper-class {
-    $markup: '<div class="' + $wrapper-class + '">';
-  }
-
   @each $scheme, $data in map-get($chroma, 'schemes') {
     // Display the scheme name and description.
     $markup: $markup
@@ -81,8 +77,11 @@
     }
   }
 
-  @if $wrapper-class {
-    $markup: $markup + '</div>';
+  @if $markup and $wrapper-class {
+    $markup: '<div class="' + $wrapper-class + '">' + $markup + '</div>';
   }
+
+  $markup: '<!-- This markup is auto-generated from Sass with chroma-kss-markup(). Do not modify. -->' + $markup;
+
   @return $markup;
 }
