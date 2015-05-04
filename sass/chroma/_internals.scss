@@ -1,6 +1,9 @@
+// Internals
 //
-// Helper functions that query the internal data structure in $chroma.
+// Helper functions that query the internal data structure in $chroma. These are
+// not part of the public API and are subject to change at any time.
 //
+// Style guide: internals
 
 // Import the global variables needed by all of Chroma.
 @import './variables';
@@ -9,7 +12,7 @@
 //
 // Checks if the named color scheme exists.
 //
-// Style guide: sass.functions.chroma.chroma-has-scheme
+// Style guide: internals.chroma-has-scheme
 @function chroma-has-scheme($scheme) {
   @return map-has-key(map-get($chroma, 'schemes'), $scheme);
 }
@@ -18,7 +21,7 @@
 //
 // Returns a list of all color schemes in $chroma.
 //
-// Style guide: sass.functions.chroma.chroma-schemes
+// Style guide: internals.chroma-schemes
 @function chroma-schemes() {
   @return map-keys(map-get($chroma, 'schemes'));
 }
@@ -28,7 +31,7 @@
 // Checks if the named color exists in the given scheme or its parent schemes.
 // Returns false or a string of the scheme name that contains the color.
 //
-// Style guide: sass.functions.chroma.chroma-has-color
+// Style guide: internals.chroma-has-color
 @function chroma-has-color($name, $scheme: $chroma-active-scheme) {
   $current-scheme: $scheme;
   @while $current-scheme {
@@ -46,7 +49,7 @@
 // Private function that adds a color to the data structure of the $chroma
 // variable.
 //
-// No styleguide reference
+// Style guide: internals._chroma-add-name
 @function _chroma-add-name($scheme, $name, $value: false, $reference: false, $referenced_by: ()) {
   $names: map-merge(
     map-get($chroma, 'names'),
@@ -68,7 +71,7 @@
 // Private function that sets up the initial data structure of the $chroma
 // variable.
 //
-// No styleguide reference
+// Style guide: internals._chroma-init
 @function _chroma-init() {
   @if length($chroma) == 0 {
     @return (
