@@ -1,7 +1,14 @@
+// KSS module
 //
-// "KSS" module for the system.
+// A basic "KSS" module for Chroma.
 //
-
+// Use `chroma-kss-markup()` to export a chunk of HTML wrapped in a `/* */` CSS
+// comment. Then use `chroma-kss-styles()` to style it.
+//
+// @TODO: These functions and mixins are a bit janky because it exports to HTML
+// directly rather than to JSON or some other exportable data set.
+//
+// Style guide: kss
 
 @import "./functions";
 
@@ -10,6 +17,9 @@
 //
 // Returns the HTML needed to display all colors in color() in a KSS style
 // guide. The parameters are used to specify the classes for various elements.
+//
+// Since regular text can only be output with Sass in certain contexts, you must
+// wrap this function call in a CSS comment.
 //
 // Usage:
 // ```scss
@@ -28,8 +38,11 @@
 // $color-class       - Defaults to 'chroma-kss'.
 // $swatch-class      - Defaults to 'chroma-kss__swatch'.
 // $variable-class    - Defaults to 'chroma-kss__variable'.
+// $alt-text-class    - Defaults to 'chroma-kss__alt-text'.
+// $value-class       - Defaults to 'chroma-kss__value'.
+// $reference-class   - Defaults to 'chroma-kss__reference'.
 //
-// style guide: sass.functions.chroma.chroma-kss-markup
+// style guide: kss.chroma-kss-markup
 
 @function chroma-kss-markup(
   $wrapper-class:     'kss-style',
@@ -84,4 +97,127 @@
   $markup: '<!-- This markup is auto-generated from Sass with chroma-kss-markup(). Do not modify. -->' + $markup;
 
   @return $markup;
+}
+
+// chroma-kss-styles()
+//
+// A mixin to add a series of rulesets that style Chroma color swatches in a KSS
+// style guide.
+//
+// Since the mixin writes CSS selectors, the mixin can be used at the root of a
+// stylesheet.
+//
+// $wrapper-class     - Defaults to 'kss-style'.
+// $title-class       - Defaults to 'chroma-kss__title'.
+// $description-class - Defaults to 'chroma-kss__description'.
+// $color-class       - Defaults to 'chroma-kss'.
+// $swatch-class      - Defaults to 'chroma-kss__swatch'.
+// $variable-class    - Defaults to 'chroma-kss__variable'.
+// $alt-text-class    - Defaults to 'chroma-kss__alt-text'.
+// $value-class       - Defaults to 'chroma-kss__value'.
+// $reference-class   - Defaults to 'chroma-kss__reference'.
+//
+// Style guide: kss.chroma-kss-styles
+
+@mixin chroma-kss-styles(
+  $wrapper-class:     'kss-style',
+  $title-class:       'chroma-kss__title',
+  $description-class: 'chroma-kss__description',
+  $color-class:       'chroma-kss',
+  $swatch-class:      'chroma-kss__swatch',
+  $variable-class:    'chroma-kss__variable',
+  $alt-text-class:    'chroma-kss__alt-text',
+  $value-class:       'chroma-kss__value',
+  $reference-class:   'chroma-kss__reference'
+) {
+  @if $wrapper-class {
+    .#{$wrapper-class} {
+      @include _chroma-kss-styles(
+        $title-class,
+        $description-class,
+        $color-class,
+        $swatch-class,
+        $variable-class,
+        $alt-text-class,
+        $value-class,
+        $reference-class
+      );
+    }
+  }
+  @else {
+    @include _chroma-kss-styles(
+      $title-class,
+      $description-class,
+      $color-class,
+      $swatch-class,
+      $variable-class,
+      $alt-text-class,
+      $value-class,
+      $reference-class
+    );
+  }
+}
+
+@mixin _chroma-kss-styles(
+  $title-class:       'chroma-kss__title',
+  $description-class: 'chroma-kss__description',
+  $color-class:       'chroma-kss',
+  $swatch-class:      'chroma-kss__swatch',
+  $variable-class:    'chroma-kss__variable',
+  $alt-text-class:    'chroma-kss__alt-text',
+  $value-class:       'chroma-kss__value',
+  $reference-class:   'chroma-kss__reference'
+  ) {
+
+  .#{$color-class} {
+    line-height: 50px;
+  }
+
+  #{$swatch-class} {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    border: 2px solid #000;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+
+  #{$variable-class} {
+    margin-right: 10px;
+  }
+
+  #{$alt-text-class} {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    // IE6 and IE7 use the wrong syntax.
+    *clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+
+  #{$value-class} {
+    color: #bbb;
+
+    code {
+      color: #bbb;
+    }
+
+    &:before {
+      // "\2192" is unicode for right arrow. "\ " is a hack; otherwise space is
+      // ignored in some browsers.
+      content: '\2192\ ';
+      font-family: sans-serif;
+    }
+  }
+
+  #{$reference-class} {
+    display: block;
+    position: relative;
+    top: -12px;
+    line-height: 25px;
+    padding-left: 50px;
+    color: #999;
+  }
 }
