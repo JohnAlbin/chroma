@@ -36,16 +36,15 @@ $CHROMA_DEFAULT_SCHEME: 'default';
 // Style guide: variables.chroma-active-scheme
 $chroma-active-scheme   : $CHROMA_DEFAULT_SCHEME !default;
 
-// $chroma-die-on-ambiguous-keyword
+// $chroma-die-on-dangerous-keyword
 //
-// Since Chroma _will_ die when using an ambiguous color keyword with Sass'
-// "compressed" output style, we die with all other output styles too.
-// Otherwise, Chroma could behave differently on production vs. development
-// environments. If you are really sure Chroma will never be run with Sass'
-// "compressed" output style, you can disable this feature.
+// Controls whether Chroma will halt Sass compilation if it encounters a
+// "dangerous color keyword".
 //
-// Style guide: variables.chroma-die-on-ambiguous-keyword
-$chroma-die-on-ambiguous-keyword  : true !default;
+// See the docs of is-dangerous-color-keyword() for more information.
+//
+// Style guide: variables.chroma-die-on-dangerous-keyword
+$chroma-die-on-dangerous-keyword: true !default;
 
 //
 // Private variables.

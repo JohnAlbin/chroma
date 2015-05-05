@@ -68,7 +68,7 @@ $chroma: _chroma-init();
     // Check if Sass will convert the color into a hex value that we can't
     // convert back to a keyword.
     @if map-has-key($ambiguous-keywords, $name) {
-      @if $chroma-die-on-ambiguous-keyword {
+      @if $chroma-die-on-dangerous-keyword {
         @error "Sass will convert #{$name} into a hexidecimal value when it uses the \"compressed\" output style and Chroma will not be able to determine if the original name was #{map-get($ambiguous-keywords, $name)}. To prevent this error, quote the keyword like this: '#{$name}'.";
       }
       @else {
