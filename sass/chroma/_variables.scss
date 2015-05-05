@@ -1,19 +1,11 @@
+// Variables module
 //
-// Variables module for Chroma; auto-imported by other modules.
+// This module contains all the public and private variables needed for Chroma
+// to function. Only public variables are documented.
 //
-
+// Auto-imported by other modules.
 //
-// Private variables.
-//
-
-// The name of the default color scheme. There's no reason to change this value.
-$CHROMA_DEFAULT_SCHEME  : 'default';
-
-// Let the Aussies, etc. have their preferred spelling.
-//
-// Rather than setting this variable directly, users should import the colour
-// module with: `@import 'chroma/colour';`
-$_chroma-spelling: 'color' !default;
+// Style guide: variables
 
 //
 // Public variables.
@@ -25,6 +17,14 @@ $_chroma-spelling: 'color' !default;
 //
 // Style guide: variables.chroma
 $chroma                 : () !default;
+
+// $CHROMA_DEFAULT_SCHEME
+//
+// The name of the default color scheme. There seems to be no reason to change
+// this value, but Chroma won't stifle your creativity.
+//
+// Style guide: variables.CHROMA_DEFAULT_SCHEME
+$CHROMA_DEFAULT_SCHEME: 'default';
 
 // $chroma-active-scheme
 //
@@ -46,3 +46,13 @@ $chroma-active-scheme   : $CHROMA_DEFAULT_SCHEME !default;
 //
 // Style guide: variables.chroma-die-on-ambiguous-keyword
 $chroma-die-on-ambiguous-keyword  : true !default;
+
+//
+// Private variables.
+//
+
+// Let the Aussies, etc. have their preferred spelling.
+//
+// Rather than setting this variable directly, users should import the colour
+// module with: `@import 'chroma/colour';`
+$_chroma-spelling: 'color' !default;
