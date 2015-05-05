@@ -73,9 +73,6 @@ $chroma-active-scheme: 'functional';
     .alternate-color-section & {
       // Outputs #c00.
       color: color(link, alternate);
-      // @TODO: Whoops! This doesn't work yet because it finds the "link" color
-      // value in the functional color scheme and never sees that the primary
-      // color has changed.
     }
   }
 }

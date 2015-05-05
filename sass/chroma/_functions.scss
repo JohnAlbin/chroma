@@ -461,7 +461,22 @@ $chroma: _chroma-init();
   @if not $actual-scheme {
     @error 'The #{$chroma-spelling} "#{$name}" was not found.';
   }
-  @return map-get(map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$name}"), 'value');
+  $color: map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$name}");
+  @if $actual-scheme == $scheme {
+    @return map-get($color, 'value');
+  }
+  @else {
+    // The value of $actual-scheme::$name is based on parents in $actual-scheme.
+    // But one or more of the parents may be defined in $scheme too, so we need
+    // to check the full reference chain.
+    $ref: map-get($color, 'reference');
+    @while $ref {
+      $actual-scheme: chroma-has-color($ref, $scheme);
+      $color: map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$ref}");
+      $ref: map-get($color, 'reference');
+    }
+    @return map-get($color, 'value');
+  }
 }
 
 // define-color-scheme($scheme [, $description] [, $parent])
@@ -607,7 +622,7 @@ $chroma: _chroma-init();
         ) !global;
         $ref: map-get($referenced-color, 'reference');
         @if $ref {
-          $scheme-of-reference: chroma-has-color($ref, $scheme-of-reference);
+          $scheme-of-reference: chroma-has-color($ref, $scheme);
           $referenced-color: map-get(map-get($chroma, 'names'), "#{$scheme-of-reference}::#{$ref}");
         }
       }
