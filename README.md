@@ -15,13 +15,11 @@ $chroma: define-default-color-scheme('Descriptive color names for use in "functi
 
 // Add colors to the default color scheme.
 $chroma: add-colors((
-  white:                  #fff,
-  off-white:              #eaeaea,
-  grey-medium:            #706e6c,
-  black:                  #000,
-
-  blue:                   #0e71b8,
-  blue-dark:              shade(#0e71b8, 25%),
+  white:       #fff,
+  grey-medium: #706e6c,
+  black:       #000,
+  blue:        #0e71b8,
+  red:         #c00,
 ));
 
 // Create a "functional" color scheme that inherits from the default color scheme.
@@ -29,21 +27,19 @@ $chroma: define-color-scheme('functional', 'Colors used by functional parts of t
 
 // Add colors to the functional color scheme.
 $chroma: add-colors('functional', (
+  // Define a primary highlight color.
+  primary:     'blue',
+
   // Have the "text" color use the hex value given to the "black" color. Even
   // though the "functional" color scheme doesn't define "black", it inherits
   // from the "default" color scheme where "black" is defined.
-  text:                   'black',
-  text-subdued:           'grey-medium',
+  text:        'black',
 
-  // The primary highlight color.
-  primary:                'blue',
+  // Colors can inherit from colors named earlier in the call to add-colors().
+  heading:     'text',
 
   // Have the link color use the primary color.
-  link:                   'primary',
-  link-active:            'blue-dark',
-
-  site-name:              'primary',
-  heading:                'text',
+  link:        'primary',
 ));
 
 // Create an "alternate" color scheme that inherits from the "functional" color scheme.
@@ -51,8 +47,7 @@ $chroma: define-color-scheme('alternate', 'Alternate colors for the site.', 'fun
 
 // Add colors to the alternate color scheme.
 $chroma: add-colors('alternate', (
-  red:                    #c00,
-  primary:                'red',
+  primary:     'red',
 ));
 
 // Set which color scheme should be used by default when calling the color()
@@ -70,7 +65,7 @@ $chroma-active-scheme: 'functional';
 
     .alternate-color-section & {
       // Outputs #c00.
-      color: color(link, alternate);
+      color: color(alternate, link);
     }
   }
 }

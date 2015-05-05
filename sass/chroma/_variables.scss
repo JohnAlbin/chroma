@@ -16,7 +16,7 @@
 // The colors and meta-data managed by Chroma.
 //
 // Style guide: variables.chroma
-$chroma                 : () !default;
+$chroma: () !default;
 
 // $CHROMA_DEFAULT_SCHEME
 //
@@ -31,10 +31,10 @@ $CHROMA_DEFAULT_SCHEME: 'default';
 // The currently active color scheme. This is the default value used by the
 // $scheme parameter of most Chroma functions.
 //
-// By default, this variable is set to the default color scheme.
+// By default, this variable is set to the 'default' color scheme.
 //
 // Style guide: variables.chroma-active-scheme
-$chroma-active-scheme   : $CHROMA_DEFAULT_SCHEME !default;
+$chroma-active-scheme: $CHROMA_DEFAULT_SCHEME !default;
 
 // $chroma-die-on-dangerous-keyword
 //

@@ -14,14 +14,25 @@ $chroma: _chroma-init();
 
 // is-dangerous-color-keyword($name)
 //
+// This function is used by color(), add-colors() and others to check if the
+// given color name is a "dangerous" color keyword. Returns false or causes the
+// Sass compilation to die with an error message containing the name of the
+// dangerous color keyword.
+//
 // If a real Sass color is given as a color name to Chroma, it is in danger of
-// being converted to a hexadecimal value before Chroma can read the name. And
-// some hex values map to more than one keyword (e.g. gray and grey), so the
+// being converted to a hexadecimal value before Chroma can read the name. (This
+// happens when Sass' "compressed" output style is used.) And some hex values
+// map to more than one keyword (e.g. gray/grey and fuchsia/magenta), so the
 // original name would be irretrievable.
 //
-// Checks if the given name is one of those dangerous color keywords. Returns
-// false or causes the Sass compilation to die with an error message containing
-// the name of the ambiguous color keywords.
+// Since Chroma will confuse fuchsia and magenta (among others) under Sass'
+// "compressed" output style, it would generate confusing results. To prevent
+// this, Chroma halts Sass compilation when it detects an ambiguous color
+// keyword. While the error only occurs under Sass' "compressed" output style,
+// Chroma halts under all output styles. Otherwise, Chroma could behave
+// differently on production vs. development environments. If you are really
+// sure Chroma will never be run with Sass' "compressed" output style, you can
+// disable this feature by setting `$chroma-die-on-dangerous-keyword: false;`.
 //
 // $name - The name of the color to check.
 //
