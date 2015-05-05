@@ -1,0 +1,56 @@
+@import "chroma";
+
+// Define the default color scheme.
+$chroma: define-default-color-scheme('Descriptive color names for use in "functional" color names below.');
+
+// Add colors to the default color scheme.
+$chroma: add-colors((
+  'gray':     #999,
+  black:      #111,
+
+  blue:       #33f,
+  red:        #933,
+));
+
+// Create a "functional" color scheme that inherits from the default color scheme.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+
+// Add colors to the functional color scheme.
+$chroma: add-colors('functional', (
+  text:       'black',
+  primary:    'blue',
+  link:       'primary',
+));
+
+// Create an "alternate" color scheme that inherits from the "functional" color scheme.
+$chroma: define-color-scheme('alternate', 'Alternate colors for the site.', 'functional');
+
+// Add colors to the alternate color scheme.
+$chroma: add-colors('alternate', (
+  primary:    'red',
+));
+
+
+.color {
+  .default-scheme {
+    /* color(red) outputs: #933 */
+    color: color(red);
+    /* color(blue) outputs: #33f */
+    color: color(blue);
+  }
+
+  $chroma-active-scheme: 'functional' !global;
+  .inherited-scheme {
+    /* color(text) outputs: #111 */
+    color: color(text);
+    /* color(link) outputs: #33f */
+    color: color(link);
+  }
+
+  .multi-inherited-scheme {
+    /* color(red) outputs: #111 */
+    color: color(alternate, text);
+    /* color(red) outputs: #933 */
+    color: color(alternate, link);
+  }
+}

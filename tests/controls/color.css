@@ -1,0 +1,18 @@
+.color .default-scheme {
+  /* color(red) outputs: #933 */
+  color: #933;
+  /* color(blue) outputs: #33f */
+  color: #33f;
+}
+.color .inherited-scheme {
+  /* color(text) outputs: #111 */
+  color: #111;
+  /* color(link) outputs: #33f */
+  color: #33f;
+}
+.color .multi-inherited-scheme {
+  /* color(red) outputs: #111 */
+  color: #111;
+  /* color(red) outputs: #933 */
+  color: #933;
+}

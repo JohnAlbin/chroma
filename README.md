@@ -104,3 +104,5 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 ## LICENSE
 
 Available under the GPL v2 license. See [LICENSE.txt](https://github.com/JohnAlbin/chroma/blob/master/LICENSE.txt).
+
+[![Build Status](https://travis-ci.org/JohnAlbin/chroma.png?branch=master)](https://travis-ci.org/JohnAlbin/chroma)
