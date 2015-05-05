@@ -23,11 +23,15 @@
 //
 // Usage:
 // ```scss
+// // Include chroma's optional kss module.
+// @import 'chroma/kss';
+// // Include the colors defined for your project.
 // @import 'init';
 //
 // /*
 // #{chroma-kss-markup()}
 // */
+// ```
 //
 // Then use a Gulp.js or Grunt task to strip the leading and trailing lines
 // (containing "/*" and "*/" respectively) from the generated file.
@@ -106,6 +110,14 @@
 //
 // Since the mixin writes CSS selectors, the mixin can be used at the root of a
 // stylesheet.
+//
+// Usage:
+// ```scss
+// // Include chroma's optional kss module.
+// @import 'chroma/kss';
+//
+// @include chroma-kss-styles();
+// ```
 //
 // $wrapper-class     - Defaults to 'kss-style'.
 // $title-class       - Defaults to 'chroma-kss__title'.
