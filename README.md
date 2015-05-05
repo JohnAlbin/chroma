@@ -1,7 +1,5 @@
 # About Chroma
 
-WARNING: This is alpha-quality software, so the API is guaranteed to change. But you can always pin your Gemfile to the specific version number you are using.
-
 Chroma is a Sass library that manages a project's color names, color variations, and color schemes.
 
 ## USAGE
