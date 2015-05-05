@@ -8,7 +8,7 @@ for Sass with Compass. https://github.com/Team-Sass/navigator
 
 ## Building the test environment
 
-Navigator works through Ruby, so you need to be running Ruby 1.8.7 or greater, and you to install [Bundler](http://bundler.io/) with `gem install bundler` or, for Mac OS X and other systems requiring administrative privileges, `sudo gem install bundler`.
+Navigator works through Ruby, so you need to be running Ruby 1.9.3 or greater, and you to install [Bundler](http://bundler.io/) with `gem install bundler` or, for Mac OS X and other systems requiring administrative privileges, `sudo gem install bundler`.
 
 Once Bundler is installed, change to the tests directory and run `bundle install` to install libraries required by this project.
 
