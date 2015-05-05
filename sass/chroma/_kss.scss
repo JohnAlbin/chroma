@@ -79,15 +79,15 @@
         $markup: $markup
           + '<div class="#{$color-class}">'
           +   '<span class="#{$swatch-class}" style="background-color: #{$value}"></span>'
-          +   '<code class="#{$variable-class}">color(#{$color})</code>'
-          +   ' <span class="#{$alt-text-class}">uses the color:</span> '
+          +   '<code class="#{$variable-class}">#{$_chroma-spelling}(#{$color})</code>'
+          +   ' <span class="#{$alt-text-class}">uses the #{$_chroma-spelling}:</span> '
           +   '<span class="#{$value-class}"><code>#{$value}</code>';
         @if $reference {
           $markup: $markup + ' (#{$reference})';
         }
         $markup: $markup + '</span>';
         @if length($referenced_by) > 0 {
-          $markup: $markup + ' <span class="#{$reference_class}">This color is inherited by: #{inspect($referenced_by)}</span>'
+          $markup: $markup + ' <span class="#{$reference_class}">This #{$_chroma-spelling} is inherited by: #{inspect($referenced_by)}</span>'
         }
         $markup: $markup + '</div>';
       }

@@ -451,7 +451,7 @@ $chroma: _chroma-init();
 
   // Confirm the scheme exists.
   @if not chroma-has-scheme($scheme) {
-    @error 'The #{$chroma-spelling} scheme "#{$scheme}" was not found.';
+    @error 'The #{$_chroma-spelling} scheme "#{$scheme}" was not found.';
   }
   // Cast the color name to a string to ensure color keywords do not cause
   // problems as map keys.
@@ -459,7 +459,7 @@ $chroma: _chroma-init();
   // Find the actual scheme used by the named color.
   $actual-scheme: chroma-has-color($name, $scheme);
   @if not $actual-scheme {
-    @error 'The #{$chroma-spelling} "#{$name}" was not found.';
+    @error 'The #{$_chroma-spelling} "#{$name}" was not found.';
   }
   $color: map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$name}");
   @if $actual-scheme == $scheme {
@@ -512,7 +512,7 @@ $chroma: _chroma-init();
 
   // Check parent reference exists.
   @if $parent and not chroma-has-scheme($parent) {
-    @error 'Cannot set the parent of #{scheme} to "#{$parent}" because the #{$chroma-spelling} scheme "#{$parent}" was not found.';
+    @error 'Cannot set the parent of #{scheme} to "#{$parent}" because the #{$_chroma-spelling} scheme "#{$parent}" was not found.';
   }
 
   $schemes: map-merge(
@@ -581,7 +581,7 @@ $chroma: _chroma-init();
     $scheme: $chroma-active-scheme;
   }
   @if not chroma-has-scheme($scheme) {
-    @error 'The #{$chroma-spelling} scheme "#{$scheme}" was not found.';
+    @error 'The #{$_chroma-spelling} scheme "#{$scheme}" was not found.';
   }
   @each $color-name, $color-value in $colors {
     // Cast the color name to a string to ensure color keywords do not cause
@@ -601,7 +601,7 @@ $chroma: _chroma-init();
       // Find the referenced color.
       $scheme-of-reference: chroma-has-color($ref, $scheme);
       @if not $scheme-of-reference {
-        @error 'The #{$chroma-spelling} "#{$ref}" was not found.';
+        @error 'The #{$_chroma-spelling} "#{$ref}" was not found.';
       }
       $referenced-color: map-get(map-get($chroma, 'names'), "#{$scheme-of-reference}::#{$ref}");
       // Add the new color.
