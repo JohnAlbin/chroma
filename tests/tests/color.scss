@@ -17,9 +17,9 @@
   }
 
   .multi-inherited-scheme {
-    /* color(red) outputs: #111 */
+    /* color(alternate, text) outputs: #111 */
     color: color(alternate, text);
-    /* color(red) outputs: #933 */
+    /* color(alternate, link) outputs: #933 */
     color: color(alternate, link);
   }
 }
