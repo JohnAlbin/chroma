@@ -3,7 +3,7 @@
 Gem::Specification.new do |spec|
   spec.name         = 'chroma-sass'
 
-  spec.summary      = %q{Chorma is the Sass color manager.}
+  spec.summary      = %q{Chroma is the Sass color manager.}
   spec.description  = %q{Chroma is the Sass color manager. Manages color names, variations, and schemes.}
 
   spec.homepage     = 'http://github.com/JohnAlbin/chroma'
