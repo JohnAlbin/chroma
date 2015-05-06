@@ -12,7 +12,6 @@
 
 @import "./functions";
 
-
 // chroma-kss-markup()
 //
 // Returns the HTML needed to display all colors in color() in a KSS style
@@ -47,7 +46,6 @@
 // $reference-class   - Defaults to 'chroma-kss__reference'.
 //
 // style guide: kss.chroma-kss-markup
-
 @function chroma-kss-markup(
   $wrapper-class:     'kss-style',
   $title-class:       'chroma-kss__title',
@@ -130,7 +128,6 @@
 // $reference-class   - Defaults to 'chroma-kss__reference'.
 //
 // Style guide: kss.chroma-kss-styles
-
 @mixin chroma-kss-styles(
   $wrapper-class:     'kss-style',
   $title-class:       'chroma-kss__title',
@@ -170,6 +167,11 @@
   }
 }
 
+// _chroma-kss-styles()
+//
+// Helper mixin for chroma-kss-styles().
+//
+// No style guide reference.
 @mixin _chroma-kss-styles(
   $title-class:       'chroma-kss__title',
   $description-class: 'chroma-kss__description',
@@ -185,7 +187,7 @@
     line-height: 50px;
   }
 
-  #{$swatch-class} {
+  .#{$swatch-class} {
     display: inline-block;
     width: 40px;
     height: 40px;
@@ -195,11 +197,11 @@
     vertical-align: middle;
   }
 
-  #{$variable-class} {
+  .#{$variable-class} {
     margin-right: 10px;
   }
 
-  #{$alt-text-class} {
+  .#{$alt-text-class} {
     position: absolute !important;
     height: 1px;
     width: 1px;
@@ -209,7 +211,7 @@
     clip: rect(1px, 1px, 1px, 1px);
   }
 
-  #{$value-class} {
+  .#{$value-class} {
     color: #bbb;
 
     code {
@@ -224,7 +226,7 @@
     }
   }
 
-  #{$reference-class} {
+  .#{$reference-class} {
     display: block;
     position: relative;
     top: -12px;
