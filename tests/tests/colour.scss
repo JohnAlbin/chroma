@@ -1,0 +1,26 @@
+@import 'init';
+@import 'chroma/colour';
+
+.colour {
+  .default-scheme {
+    /* colour(red) outputs: #933 */
+    color: colour(red);
+    /* colour(blue) outputs: #33f */
+    color: colour(blue);
+  }
+
+  $chroma-active-scheme: 'functional' !global;
+  .inherited-scheme {
+    /* colour(text) outputs: #111 */
+    color: colour(text);
+    /* colour(link) outputs: #33f */
+    color: colour(link);
+  }
+
+  .multi-inherited-scheme {
+    /* colour(alternate, text) outputs: #111 */
+    color: colour(alternate, text);
+    /* colour(alternate, link) outputs: #933 */
+    color: colour(alternate, link);
+  }
+}
