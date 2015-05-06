@@ -43,7 +43,7 @@ $chroma: add-colors('functional', (
 ));
 
 // Create an "alternate" color scheme that inherits from the "functional" color scheme.
-$chroma: define-color-scheme('alternate', 'Alternate colors for the site.', 'functional');
+$chroma: define-color-scheme('alternate', 'Alternate colors for the site.', $parent: 'functional');
 
 // Add colors to the alternate color scheme.
 $chroma: add-colors('alternate', (
