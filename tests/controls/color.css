@@ -4,6 +4,12 @@
   /* color(blue) outputs: #33f */
   color: #33f;
 }
+.color-function .given-name-parameter .should-find-color-with-quoted-string {
+  /* color('gray') outputs: #999 */
+  color: #999;
+  /* color('black') outputs: #111 */
+  color: #111;
+}
 .color-function .given-global-active-schema-variable .should-find-value-from-parent-scheme {
   /* color(text) outputs: #111 */
   color: #111;

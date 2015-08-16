@@ -8,6 +8,13 @@
       /* color(blue) outputs: #33f */
       color: color(blue);
     }
+
+    .should-find-color-with-quoted-string {
+      /* color('gray') outputs: #999 */
+      color: color('gray');
+      /* color('black') outputs: #111 */
+      color: color('black');
+    }
   }
 
   .given-global-active-schema-variable {
