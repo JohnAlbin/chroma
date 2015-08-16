@@ -78,7 +78,9 @@ $chroma: _chroma-init();
   }
 
   // Convert the color to a string.
-  $name: inspect($name);
+  @if type-of($name) == 'color' {
+    $name: inspect($name);
+  }
 
   @return if(map-has-key($_chroma-css4-color-keywords, $name), map-get($_chroma-css4-color-keywords, $name), false);
 }
@@ -92,9 +94,9 @@ $chroma: _chroma-init();
 //
 // Style guide: functions.chroma-to-string
 @function chroma-to-string($name) {
-  // If the name is a color keyword, convert it to a string.
+  // If the name is a color keyword, is-color-keyword() converts it to a string.
   $is-keyword: is-color-keyword($name);
-  @return if($is-keyword, $is-keyword, inspect($name));
+  @return if($is-keyword, $is-keyword, $name);
 }
 
 // color([$scheme,] $name)
