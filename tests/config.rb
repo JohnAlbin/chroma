@@ -1,7 +1,7 @@
 # Require any additional compass plugins here.
 
 # File system locations
-sass_dir              = 'tests'
+sass_dir              = 'fixtures'
 css_dir               = 'output'
 
 # If developing an extension, add your extension's stylesheets folder as an import path.
