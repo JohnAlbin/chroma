@@ -1,18 +1,22 @@
-.color .default-scheme {
+.color-function .given-name-parameter .should-find-color-with-bare-string {
   /* color(red) outputs: #933 */
   color: #933;
   /* color(blue) outputs: #33f */
   color: #33f;
 }
-.color .inherited-scheme {
+.color-function .given-global-active-schema-variable .should-find-value-from-parent-scheme {
   /* color(text) outputs: #111 */
   color: #111;
+}
+.color-function .given-global-active-schema-variable .should-find-multi-inherited-value {
   /* color(link) outputs: #33f */
   color: #33f;
 }
-.color .multi-inherited-scheme {
+.color-function .given-schema-parameter .should-find-color-from-parent-scheme {
   /* color(alternate, text) outputs: #111 */
   color: #111;
+}
+.color-function .given-schema-parameter .should-find-multi-inherited-value {
   /* color(alternate, link) outputs: #933 */
   color: #933;
 }
