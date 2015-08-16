@@ -1,0 +1,27 @@
+{
+  "name": "chroma-sass",
+  "version": "1.0.0-beta.3",
+  "homepage": "https://github.com/JohnAlbin/chroma",
+  "author": "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)",
+  "description": "Chroma is the Sass color manager.",
+  "license": "GPL-2.0",
+  "keywords": [
+    "sass",
+    "colors"
+  ],
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "cd tests; bundle exec rake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnAlbin/chroma.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JohnAlbin/chroma/issues"
+  }
+}
