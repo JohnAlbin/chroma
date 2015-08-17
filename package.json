@@ -14,10 +14,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "kss": "kss-node/kss-node"
+    "chai": "^3.2.0",
+    "kss": "kss-node/kss-node",
+    "mocha": "^2.2.5",
+    "sassy-test": "^1.0.0"
   },
   "scripts": {
-    "test": "echo 'no tests'",
+    "test": "mocha",
     "docs": "kss-node --source sass --source docs --destination gh-pages --homepage homepage.md --title 'Chroma for Sass'"
   },
   "repository": {
