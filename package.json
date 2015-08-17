@@ -10,14 +10,14 @@
     "colors"
   ],
   "directories": {
-    "test": "tests"
+    "test": "test"
   },
   "dependencies": {},
   "devDependencies": {
     "kss": "kss-node/kss-node"
   },
   "scripts": {
-    "test": "cd tests; bundle exec rake",
+    "test": "cd test; bundle exec rake",
     "docs": "kss-node --source sass --source docs --destination gh-pages --homepage homepage.md --title 'Chroma for Sass'"
   },
   "repository": {

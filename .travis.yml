@@ -8,8 +8,8 @@ rvm:
   - 2.1.2
   - 2.2.1
 gemfile:
-  - tests/Gemfile
+  - test/Gemfile
 branches:
   only:
     - master
-script: cd tests; bundle exec rake
+script: cd test; bundle exec rake
