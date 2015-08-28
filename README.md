@@ -101,6 +101,10 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 
 * Sass 3.4.0 or later
 
+Note: libsass 3.2.5 or earlier does not work with chroma-sass due to a bug in
+libsass. ☹ libsass 3.3.0 should fix the bug, but it has not been tested. See
+https://github.com/JohnAlbin/chroma/issues/10
+
 ## LICENSE
 
 Available under the GPL v2 license. See [LICENSE.txt](https://github.com/JohnAlbin/chroma/blob/master/LICENSE.txt).
