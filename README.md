@@ -4,8 +4,7 @@ Chroma is a Sass library that manages a project's color names, color variations,
 
 ## USAGE
 
-Betters docs are coming, but here's some documentation in the form of example
-code.
+~~Betters docs are coming, but~~ Better docs are now available at http://johnalbin.github.io/chroma/ and here's some quick documentation in the form of example code.
 
 ```scss
 @import "chroma";
