@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--[if lte IE 6]>            <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IEMobile 7]>          <html class="no-js iem7" lang="en"> <![endif]-->
+<!--[if (IE 7)&(!IEMobile)]>  <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>                <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|(gt IEMobile 7)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Chroma for Sass</title>
+
+  <meta name="description" content="">
+  <meta name="generator" content="kss-node">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="public/kss.css">
+  
+</head>
+<body id="kss-node">
+
+<div class="kss-sidebar kss-style">
+  <header class="kss-header">
+    <h1 class="kss-doc-title">Chroma for Sass</h1>
+  </header>
+  <nav class="kss-nav">
+    <ul class="kss-nav__menu">
+      <li class="kss-nav__menu-item">
+        <a href="./">
+          <span class="kss-nav__ref">0</span
+          ><span class="kss-nav__name">Overview</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-variables.html">
+          <span class="kss-nav__ref">1</span
+          ><span class="kss-nav__name">Variables module</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-functions.html">
+          <span class="kss-nav__ref">2</span
+          ><span class="kss-nav__name">Functions module</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-skin.html">
+          <span class="kss-nav__ref">3</span
+          ><span class="kss-nav__name">Skin module</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-colour.html">
+          <span class="kss-nav__ref">4</span
+          ><span class="kss-nav__name">Colour module</span>
+        </a>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-kss.html">
+          <span class="kss-nav__ref">5</span
+          ><span class="kss-nav__name">KSS module</span>
+        </a>
+        <ul class="kss-nav__menu-child">
+            <li class="kss-nav__menu-item">
+              <a href="section-kss.html#kssref-kss-chroma-kss-markup">
+                <span class="kss-nav__ref ">5.1</span
+                ><span class="kss-nav__name">chroma-kss-markup()</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-kss.html#kssref-kss-chroma-kss-styles">
+                <span class="kss-nav__ref ">5.2</span
+                ><span class="kss-nav__name">chroma-kss-styles()</span>
+              </a>
+            </li>
+        </ul>
+      </li>
+      <li class="kss-nav__menu-item">
+        <a href="section-internals.html">
+          <span class="kss-nav__ref">6</span
+          ><span class="kss-nav__name">Internals</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<article role="main" class="kss-main">
+
+      <div     id="kssref-kss" class="kss-section kss-section--depth-1">
+
+    <div class="kss-style">
+      <h1 class="kss-title kss-title--level-1">
+        <a class="kss-title__permalink" href="#kssref-kss">
+          <span class="kss-title__ref">
+              5
+            <span class="kss-title__permalink-hash">
+                #kss
+            </span>
+          </span>
+          KSS module
+        </a>
+      </h1>
+
+
+      <div class="kss-description">
+        <p>A basic &quot;KSS&quot; module for Chroma.</p>
+<p>Use <code>chroma-kss-markup()</code> to export a chunk of HTML wrapped in a <code>/* */</code> CSS
+comment. Then use <code>chroma-kss-styles()</code> to style it.</p>
+<p>@TODO: These functions and mixins are a bit janky because it exports to HTML
+directly rather than to JSON or some other exportable data set.</p>
+
+      </div>
+    </div>
+
+
+      </div>
+      <section id="kssref-kss-chroma-kss-markup" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-kss-chroma-kss-markup">
+          <span class="kss-title__ref">
+              5.1
+            <span class="kss-title__permalink-hash">
+                #kss.chroma-kss-markup
+            </span>
+          </span>
+          chroma-kss-markup()
+        </a>
+      </h2>
+
+      <ul class="kss-parameters">
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$wrapper-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;kss-style&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$title-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__title&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$description-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__description&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$color-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$swatch-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__swatch&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$variable-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__variable&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$alt-text-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__alt-text&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$value-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__value&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$reference-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__reference&#39;.</div>
+        </li>
+      </ul>
+
+      <div class="kss-description">
+        <p>Returns the HTML needed to display all colors in color() in a KSS style
+guide. The parameters are used to specify the classes for various elements.</p>
+<p>Since regular text can only be output with Sass in certain contexts, you must
+wrap this function call in a CSS comment.</p>
+<p>Usage:</p>
+<pre><code class="lang-scss">// Include chroma&#39;s optional kss module.
+@import &#39;chroma/kss&#39;;
+// Include the colors defined for your project.
+@import &#39;init&#39;;
+
+/*
+#{chroma-kss-markup()}
+*/
+</code></pre>
+<p>Then use a Gulp.js or Grunt task to strip the leading and trailing lines
+(containing &quot;/<em>&quot; and &quot;</em>/&quot; respectively) from the generated file.</p>
+
+      </div>
+    </div>
+
+
+      </section>
+      <section id="kssref-kss-chroma-kss-styles" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-kss-chroma-kss-styles">
+          <span class="kss-title__ref">
+              5.2
+            <span class="kss-title__permalink-hash">
+                #kss.chroma-kss-styles
+            </span>
+          </span>
+          chroma-kss-styles()
+        </a>
+      </h2>
+
+      <ul class="kss-parameters">
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$wrapper-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;kss-style&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$title-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__title&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$description-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__description&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$color-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$swatch-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__swatch&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$variable-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__variable&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$alt-text-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__alt-text&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$value-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__value&#39;.</div>
+        </li>
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$reference-class</code>
+          <div class="kss-parameters__description">Defaults to &#39;chroma-kss__reference&#39;.</div>
+        </li>
+      </ul>
+
+      <div class="kss-description">
+        <p>A mixin to add a series of rulesets that style Chroma color swatches in a KSS
+style guide.</p>
+<p>Since the mixin writes CSS selectors, the mixin can be used at the root of a
+stylesheet.</p>
+<p>Usage:</p>
+<pre><code class="lang-scss">// Include chroma&#39;s optional kss module.
+@import &#39;chroma/kss&#39;;
+
+@include chroma-kss-styles();
+</code></pre>
+
+      </div>
+    </div>
+
+
+      </section>
+</article>
+
+<!-- SCRIPTS -->
+<script src="public/kss.js"></script>
+<script src="public/prettify.js"></script>
+<script>
+  prettyPrint();
+</script>
+
+
+
+<!-- Automatically generated using <a href="https://github.com/kss-node/kss-node">kss-node</a>. -->
+</body>
+</html>
