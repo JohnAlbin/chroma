@@ -50,7 +50,13 @@
             <li class="kss-nav__menu-item">
               <a href="section-skin.html#kssref-skin-define-skin">
                 <span class="kss-nav__ref ">3.1</span
-                ><span class="kss-nav__name">define-skin()</span>
+                ><span class="kss-nav__name">define-skin($scheme, $selector)</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-skin.html#kssref-skin-skin">
+                <span class="kss-nav__ref ">3.2</span
+                ><span class="kss-nav__name">skin([$skins])</span>
               </a>
             </li>
         </ul>
@@ -127,7 +133,7 @@ to use for that skin.</p>
                 #skin.define-skin
             </span>
           </span>
-          define-skin()
+          define-skin($scheme, $selector)
         </a>
       </h2>
 
@@ -147,6 +153,43 @@ to use for that skin.</p>
 given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
 <p>Usage:</p>
 <pre><code class="lang-scss">$chroma: define-skin(&#39;scheme1&#39;, &#39;.is-scheme1-skin&#39;);
+</code></pre>
+
+      </div>
+    </div>
+
+
+      </section>
+      <section id="kssref-skin-skin" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-skin-skin">
+          <span class="kss-title__ref">
+              3.2
+            <span class="kss-title__permalink-hash">
+                #skin.skin
+            </span>
+          </span>
+          skin([$skins])
+        </a>
+      </h2>
+
+      <ul class="kss-parameters">
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$skins</code>
+          <div class="kss-parameters__description">An optional list of color scheme names and selectors to use instead of the skins defined with <code>define-skin()</code>. The format of this list should match that of the <code>$skins</code> parameter in <code>define-skins()</code>.</div>
+        </li>
+      </ul>
+
+      <div class="kss-description">
+        <p>Output the default color and all the colors needed for defined skins.</p>
+<p>Usage:</p>
+<pre><code class="lang-scss">h1 {
+  @include skin() {
+    color: color(heading);
+  }
+}
 </code></pre>
 
       </div>
