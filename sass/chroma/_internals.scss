@@ -69,7 +69,7 @@
 // _chroma-init()
 //
 // Private function that sets up the initial data structure of the $chroma
-// variable.
+// variable. Can be called repeatedly without damaging existing data.
 //
 // Style guide: internals._chroma-init
 @function _chroma-init() {
