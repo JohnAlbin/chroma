@@ -38,7 +38,8 @@
 // ```
 //
 // $skins - A list of color scheme names and selectors to use instead of the
-//   skins defined with `@define-skin()`
+//          skins defined with `@define-skin()`
+//
 // Style guide: skin.skin
 @mixin skin($skins: null) {
   @if type-of($skins) == 'null' {

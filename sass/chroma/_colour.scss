@@ -60,7 +60,7 @@ $_chroma-spelling: 'colour';
 //
 // See `add-colors()` for the documentation.
 //
-// Style guide: functions.add-colours
+// Style guide: colour.add-colours
 @function add-colours($scheme, $colours: null) {
   @return add-colors($scheme, $colours);
 }
