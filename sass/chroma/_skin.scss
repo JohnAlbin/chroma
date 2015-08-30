@@ -24,7 +24,7 @@
 
 @import "./functions";
 
-// skin()
+// skin([$skins])
 //
 // Output the default color and all the colors needed for defined skins.
 //
@@ -37,8 +37,9 @@
 // }
 // ```
 //
-// $skins - A list of color scheme names and selectors to use instead of the
-//          skins defined with `@define-skin()`
+// $skins - An optional list of color scheme names and selectors to use instead
+//          of the skins defined with `define-skin()`. The format of this list
+//          should match that of the `$skins` parameter in `define-skins()`.
 //
 // Style guide: skin.skin
 @mixin skin($skins: null) {

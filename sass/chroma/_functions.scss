@@ -314,7 +314,7 @@ $chroma: _chroma-init();
   @return $chroma;
 }
 
-// define-skin()
+// define-skin($scheme, $selector)
 //
 // Defines that the specified color scheme can be used as a skin when the
 // given parent selector matches our HTML. See the `skin()` mixin.
@@ -343,7 +343,7 @@ $chroma: _chroma-init();
   );
 }
 
-// define-skins()
+// define-skins($skins)
 //
 // Helper function to define multiple skins at once.
 //
