@@ -1,0 +1,67 @@
+// Skin module
+//
+// A "Skin" module for Chroma.
+//
+// Sometimes design and engineering requirements mean that we need to:
+// - output the colors for default color scheme and one or more additional color
+//   schemes into the same CSS file
+// - and to control which color scheme is used via a "global" CSS class name set
+//   on the web pages's `html` or `body` element.
+//
+// For example, the `.my-complexion` component may output a blue text color on
+// most pages, but on pages with a `<html class="skin-wicked-witch">`, the
+// `.my-complexion` component will output a green text color.
+//
+// The Skin module will help with this requirement.
+//
+// After defining your color schemes and their colors, you can define one or
+// more of those schemes as skins while providing the proper CSS parent selector
+// to use for that skin.
+//
+// Style guide: skin
+
+@import "./functions";
+
+// skin()
+//
+// Output the default color and all the colors needed for defined skins.
+//
+// Usage:
+// ```scss
+// h1 {
+//   @include skin() {
+//     color: color(heading);
+//   }
+// }
+// ```
+//
+// $skins - A list of color scheme names and selectors to use instead of the
+//   skins defined with `@define-skin()`
+// Style guide: skin.skin
+@mixin skin($skins: null) {
+  @if type-of($skins) == 'null' {
+    $skins: map-get($chroma, 'skins');
+  }
+
+  // Save the current active scheme.
+  $original-active-scheme: $chroma-active-scheme;
+
+  // Output the default color property.
+  @content;
+
+  @if length($skins) == 0 {
+    @warn "skin() mixin used, but no skins have been defined in Chroma.";
+  }
+
+  // Output the color property for each scheme.
+  @each $scheme, $selector in $skins {
+    $chroma-active-scheme: $scheme !global;
+
+    #{$selector} & {
+      @content
+    }
+  }
+
+  // Restore the original active scheme.
+  $chroma-active-scheme: $original-active-scheme !global;
+}

@@ -311,3 +311,53 @@ $chroma: _chroma-init();
 
   @return $chroma;
 }
+
+// define-skin()
+//
+// Defines that the specified color scheme can be used as a skin when the
+// given parent selector matches our HTML. See the `skin()` mixin.
+//
+// Usage:
+// ```scss
+// $chroma: define-skin('scheme1', '.is-scheme1-skin');
+// ```
+//
+// $scheme   - Name of the color scheme to use when the `$selector` matches our
+//             HTML.
+// $selector - A CSS parent selector that triggers the use of the defined
+//             `$scheme` instead of the default color scheme. We recommend using
+//             a simple CSS selector like `.is-CUSTOMNAME-skin`.
+//
+// Style guide: skin.define-skin
+@function define-skin($scheme, $selector) {
+  $skins: map-merge(
+    map-get($chroma, 'skins'),
+    ($scheme: $selector)
+  );
+
+  @return map-merge(
+    $chroma,
+    ('skins': $skins)
+  );
+}
+
+// define-skins()
+//
+// Helper function to define multiple skins at once.
+//
+// Usage:
+// ```scss
+// $chroma: define-skins((
+//   'scheme1': '.is-scheme1-skin',
+//   'scheme2': '.is-scheme2-skin',
+//   'scheme3': 'html > body.this-works-but-is.way.too.specific.IMHO',
+// ));
+// ```
+//
+// $skins - A list of color schemes and their
+@function define-skins($skins) {
+  @each $scheme, $selector in $skins {
+    $chroma: define-skin($scheme, $selector) !global;
+  }
+  @return $chroma;
+}
