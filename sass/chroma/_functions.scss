@@ -356,7 +356,9 @@ $chroma: _chroma-init();
 // ));
 // ```
 //
-// $skins - A list of color schemes and their
+// $skins - A list of color schemes and their A CSS parent selectors
+//
+// Style guide: skin.define-skins
 @function define-skins($skins) {
   @each $scheme, $selector in $skins {
     $chroma: define-skin($scheme, $selector) !global;

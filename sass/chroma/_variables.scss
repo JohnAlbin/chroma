@@ -17,13 +17,31 @@
 //
 // The colors and meta-data managed by Chroma.
 //
+// Chroma stores all of its colors, color schemes, skins etc. in the global
+// sass variable, `$chroma`. All of Chroma's configuration functions are
+// designed to save their changes to the system by changing the value of the
+// `$chroma` variable. For example: `$chroma: add-colors((kermit, #70af00));`
+//
+// Note: since the `$chroma` variable is a complex map of data structures, it
+// is highly recommended to only access `$chroma` through the functions and
+// mixins provided and not attempt to read data from `$chroma` with Sass'
+// `map-get()` and `map-set()` functions. (If you find you need more helper
+// functions, submit a feature request! We're happy to help.)
+//
 // Style guide: variables.chroma
 $chroma: () !default;
 
 // $CHROMA_DEFAULT_SCHEME
 //
-// The name of the default color scheme. There seems to be no reason to change
-// this value, but Chroma won't stifle your creativity.
+// The name of the default color scheme. The initial name is `default`, but if
+// you want to change it, you must set this variable before Chroma is imported.
+// Setting it afterwards will likely break the system.
+//
+// Usage:
+// ```scss
+// $CHROMA_DEFAULT_SCHEME: 'universal';
+// @import 'chroma';
+// ```
 //
 // Style guide: variables.CHROMA_DEFAULT_SCHEME
 $CHROMA_DEFAULT_SCHEME: 'default';
