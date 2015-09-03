@@ -1,6 +1,5 @@
 # Exclude stuff specific to this project.
 node_modules
-Gemfile.lock
 
 # Exclude IDE management files.
   # Eclipse
