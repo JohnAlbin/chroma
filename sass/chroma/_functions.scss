@@ -75,9 +75,11 @@ $chroma: _chroma-init();
   // hexadecimal value before we can read the name. And some hex values map to
   // more than one keyword (e.g. gray and grey), so the original name would be
   // irretrievable.
-  @if is-dangerous-color-keyword($name) {
-    // If true, the is-dangerous-color-keyword() would @die before it returned.
-  }
+  //
+  // While is-dangerous-color-keyword() would normally @error before it
+  // returned, if it does return a true value, we should continue inspecting
+  // $name so we can convert it to a string.
+  $is-dangerous: is-dangerous-color-keyword($name);
 
   // Convert the color to a string.
   @if type-of($name) == 'color' {
