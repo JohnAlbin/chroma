@@ -210,20 +210,56 @@ $chroma: _chroma-init();
   );
 }
 
-// define-default-color-scheme($description)
+// define-default-color-scheme([$name,] $description)
 //
 // Sets the description of the default color scheme.
 //
 // Usage:
 // ```scss
 // $chroma: define-default-color-scheme('Default colors');
+// // or:
+// $chroma: define-default-color-scheme('branding', 'Basic branding colors');
 // ```
 //
+// $name - Optional: default color scheme name; defaults to `default`.
 // $description - Description of the default color scheme.
 //
 // Style guide: functions.define-default-color-scheme
-@function define-default-color-scheme($description) {
-  @return define-color-scheme($CHROMA_DEFAULT_SCHEME, $description);
+@function define-default-color-scheme($name, $description: null) {
+  @if type-of($description) == 'null' {
+    // The shortcut syntax was used since $description is null. Move the actual
+    // description to the $description parameter.
+    $description: $name;
+    @return define-color-scheme($CHROMA_DEFAULT_SCHEME, $description);
+  }
+
+  // Remove the old default.
+  $schemes: map-remove(map-get($chroma, 'schemes'), $CHROMA_DEFAULT_SCHEME);
+  // Update all child schemes of the default.
+  @each $scheme-name, $map in $schemes {
+    @if map-get($map, 'parent') == $CHROMA_DEFAULT_SCHEME {
+      $schemes: map-merge(
+        $schemes,
+        ($scheme-name: (
+          'description': map-get($map, 'description'),
+          'parent': $name,
+        ))
+      );
+    }
+  }
+  // Set the new default scheme name.
+  $CHROMA_DEFAULT_SCHEME: $name !global;
+  // Add the default scheme back into $chroma.
+  @return map-merge(
+    $chroma,
+    ('schemes': map-merge(
+      $schemes,
+      ($name: (
+        'description': $description,
+        'parent': false,
+      ))
+    ))
+  );
 }
 
 // add-colors([$scheme,] $colors)

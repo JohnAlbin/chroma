@@ -33,15 +33,11 @@ $chroma: () !default;
 
 // $CHROMA_DEFAULT_SCHEME
 //
-// The name of the default color scheme. The initial name is `default`, but if
-// you want to change it, you must set this variable before Chroma is imported.
-// Setting it afterwards will likely break the system.
+// The name of the default color scheme; defaults to `default`. This variable
+// is READ ONLY; changing its value will break Chroma.
 //
-// Usage:
-// ```scss
-// $CHROMA_DEFAULT_SCHEME: 'universal';
-// @import 'chroma';
-// ```
+// If you want to change this variable's value, you must use the
+// `define-default-color-scheme()` function instead.
 //
 // Style guide: variables.CHROMA_DEFAULT_SCHEME
 $CHROMA_DEFAULT_SCHEME: 'default';
