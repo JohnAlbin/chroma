@@ -1,0 +1,20 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  primary: #eee,
+));
+
+$chroma: define-color-scheme('child');
+$chroma: add-colors(child, (
+  child-color: 'primary',
+));
+
+$chroma: define-color-scheme('grandchild', $parent: 'child');
+$chroma: add-colors(grandchild, (
+  primary: #ddd,
+));
+
+.test {
+  parent-color-default: color(child, child-color);
+  parent-color-overridden: color(grandchild, child-color);
+}

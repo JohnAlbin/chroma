@@ -1,0 +1,10 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  my-color: #eee,
+));
+
+.test {
+  colors: map-keys(map-get($chroma, 'names'));
+  simple-value: color(my-color);
+}

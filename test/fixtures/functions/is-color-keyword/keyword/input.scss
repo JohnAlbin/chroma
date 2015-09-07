@@ -1,0 +1,7 @@
+@import 'chroma/functions';
+
+.test {
+  keyword: is-color-keyword(white);
+  non-keyword: is-color-keyword(kermit);
+  string: is-color-keyword('white');
+}

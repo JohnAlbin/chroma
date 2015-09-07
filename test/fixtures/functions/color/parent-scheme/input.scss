@@ -1,0 +1,20 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  white: #eee,
+));
+
+$chroma: define-color-scheme('child');
+$chroma: add-colors(child, (
+  child-color: #ccc,
+));
+
+$chroma: define-color-scheme('grandchild', $parent: 'child');
+$chroma: add-colors(grandchild, (
+  grandchild-color: #999,
+));
+
+.test {
+  parent-scheme: color(grandchild, child-color);
+  grandparent-scheme: color(grandchild, white);
+}

@@ -1,0 +1,6 @@
+@import 'chroma/functions';
+
+$chroma: add-colors(child, (
+  green: #0e0,
+  blue: #00e,
+));

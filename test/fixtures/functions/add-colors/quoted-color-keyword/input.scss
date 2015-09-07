@@ -1,0 +1,15 @@
+$chroma-die-on-dangerous-keyword: false;
+
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  // Color keyword as string.
+  'black': #111,
+  // Dangerous color keyword as string.
+  'gray': #999,
+));
+
+.test {
+  color: color('black');
+  color: color('gray');
+}

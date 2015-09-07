@@ -1,0 +1,8 @@
+$chroma-die-on-dangerous-keyword: false;
+
+@import 'chroma/functions';
+
+.test {
+  keyword: lightslategray;
+  converted-dangerous-keyword: is-dangerous-color-keyword(lightslategray);
+}

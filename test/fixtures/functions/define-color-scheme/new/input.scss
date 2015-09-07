@@ -1,0 +1,10 @@
+@import 'chroma/functions';
+
+$chroma: define-color-scheme('child');
+$chroma: define-color-scheme('grandchild', $parent: 'child');
+
+.test {
+  schemes: chroma-schemes();
+  child-parent: map-get(map-get(map-get($chroma, 'schemes'), 'child'), 'parent');
+  grandchild-parent: map-get(map-get(map-get($chroma, 'schemes'), 'grandchild'), 'parent');
+}
