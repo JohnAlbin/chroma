@@ -1,0 +1,8 @@
+@import 'chroma';
+
+$chroma: define-color-scheme('test', 'test scheme');
+
+.test {
+  scheme-exists: if(chroma-has-scheme('test'), 'true', 'false');
+  scheme-does-not-exist: if(chroma-has-scheme('testFailure'), 'true', 'false');
+}

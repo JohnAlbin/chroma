@@ -1,0 +1,6 @@
+@import 'chroma';
+
+.test {
+  is-keyword-string: if(_is-keyword-string('gray'), "true", "false");
+  is-keyword: if(_is-keyword-string(gray), "true", "false");
+}

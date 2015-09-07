@@ -1,0 +1,8 @@
+@import 'chroma';
+
+$chroma: define-color-scheme('test', 'test scheme');
+$chroma: define-color-scheme('test2', 'test scheme');
+
+.test {
+  schemes: chroma-schemes();
+}

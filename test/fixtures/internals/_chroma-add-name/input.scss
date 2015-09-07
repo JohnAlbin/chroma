@@ -1,0 +1,17 @@
+@import 'chroma';
+
+$chroma: _chroma-add-name('default', 'test', #123);
+$chroma: _chroma-add-name('default', 'test-parent', #456, false, ('test-ref'));
+$chroma: _chroma-add-name('default', 'test-ref', false, 'test-parent');
+
+.test {
+  colors-exist: map-keys(map-get($chroma, 'names'));
+  color-has-defaults: map-get(map-get(map-get($chroma, 'names'), 'default::test'), 'reference');
+  color-has-defaults: length(map-get(map-get(map-get($chroma, 'names'), 'default::test'), 'referenced_by'));
+
+  parent-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-parent'), 'reference');
+  parent-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-parent'), 'referenced_by');
+
+  ref-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-ref'), 'reference');
+  ref-has-values: length(map-get(map-get(map-get($chroma, 'names'), 'default::test-ref'), 'referenced_by'));
+}

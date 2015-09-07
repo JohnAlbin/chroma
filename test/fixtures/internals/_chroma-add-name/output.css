@@ -1,0 +1,8 @@
+.test {
+  colors-exist: "default::test", "default::test-parent", "default::test-ref";
+  color-has-defaults: false;
+  color-has-defaults: 0;
+  parent-has-values: false;
+  parent-has-values: "test-ref";
+  ref-has-values: "test-parent";
+  ref-has-values: 0; }

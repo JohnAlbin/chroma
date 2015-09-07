@@ -1,0 +1,14 @@
+@import 'chroma/internals';
+
+.test {
+  uninitialized-length: length($chroma);
+}
+
+$chroma: _chroma-init();
+
+.test {
+  initialized-length: length($chroma);
+  chroma-keys: map-keys($chroma);
+  chroma-schemes: map-keys(map-get($chroma, 'schemes'));
+  default-scheme-keys: map-keys(map-get(map-get($chroma, 'schemes'), 'default'));
+}

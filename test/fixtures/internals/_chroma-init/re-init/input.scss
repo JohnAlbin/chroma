@@ -1,0 +1,23 @@
+@import 'chroma/internals';
+
+$chroma: _chroma-init();
+
+.test {
+  chroma-schemes: map-keys(map-get($chroma, 'schemes'));
+}
+
+// Add some dummy data to $chroma.
+$chroma: map-merge(
+  $chroma,
+  ('schemes': map-merge(
+    map-get($chroma, 'schemes'),
+    ('test': ('description': '', 'parent': false))
+  ))
+);
+
+// Re-initialize.
+$chroma: _chroma-init();
+
+.test {
+  chroma-schemes: map-keys(map-get($chroma, 'schemes'));
+}
