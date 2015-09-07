@@ -147,9 +147,10 @@ $chroma: _chroma-init();
     @return map-get($color, 'value');
   }
   @else {
-    // The value of $actual-scheme::$name is based on parents in $actual-scheme.
-    // But one or more of the parents may be defined in $scheme too, so we need
-    // to check the full reference chain.
+    // The value of $actual-scheme::$name is based on colors in $actual-scheme
+    // and its parent schemes. But one or more of the parent colors may be
+    // defined (overridden) in $scheme too, so we need to check the full
+    // reference chain.
     $ref: map-get($color, 'reference');
     @while $ref {
       $actual-scheme: chroma-has-color($ref, $scheme);
@@ -249,7 +250,7 @@ $chroma: _chroma-init();
   }
   // Set the new default scheme name.
   $CHROMA_DEFAULT_SCHEME: $name !global;
-  // Add the default scheme back into $chroma.
+  // Add the default scheme (and the updated schemes) back into $chroma.
   @return map-merge(
     $chroma,
     ('schemes': map-merge(
