@@ -2,6 +2,10 @@
 
 Chroma is a Sass library that manages a project's color names, color variations, and color schemes.
 
+## VERSION
+
+These docs are for Chroma 1.0.0.
+
 ## USAGE
 
 Here's a quick example of what you can do with Chroma.
@@ -72,7 +76,11 @@ $chroma-active-scheme: 'functional';
 
 ## INSTALLATION
 
-Chroma is distributed as a Ruby Gem. On your computer, simply run:
+Chroma can be installed either as a Ruby Gem or as a Bower component.
+
+## Ruby Sass Installation
+
+On your computer, simply run:
 
 ```sh
 gem install chroma-sass
@@ -91,6 +99,26 @@ require 'chroma'
 ```
 
 You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
+
+```scss
+@import "chroma";
+```
+
+## Bower installation
+
+On your computer, simply run:
+
+```sh
+bower install chroma-sass --save-dev
+```
+
+You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
+
+```scss
+@import "../path/to/bower_components/chroma/chroma";
+```
+
+Alternatively, you can add the `bower_components/chroma` path to your Sass tool's import paths and then use the simpler:
 
 ```scss
 @import "chroma";
