@@ -1,0 +1,9 @@
+$chroma-die-on-dangerous-keyword: false;
+
+@import 'chroma/colour';
+
+.test {
+  dangerous-keyword: is-dangerous-colour-keyword(gray);
+  keyword: is-dangerous-colour-keyword(white);
+  string: is-dangerous-colour-keyword('gray');
+}

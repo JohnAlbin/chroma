@@ -1,0 +1,13 @@
+@import 'chroma/colour';
+
+$chroma: add-colours((
+  my-colour: #eee,
+  child-colour: 'my-colour',
+  grandchild-colour: 'child-colour',
+));
+
+.test {
+  colours: map-keys(map-get($chroma, 'names'));
+  my-colour-references: map-get(map-get(map-get($chroma, 'names'), 'default::my-colour'), 'referenced_by');
+  child-colour-references: map-get(map-get(map-get($chroma, 'names'), 'default::child-colour'), 'referenced_by');
+}
