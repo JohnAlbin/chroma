@@ -78,7 +78,7 @@ $chroma-active-scheme: 'functional';
 
 ## INSTALLATION
 
-Chroma can be installed either as a Ruby Gem or as a Bower component.
+Chroma can be installed either as a Ruby Gem, as a Bower component, or as a NPM module.
 
 ## Ruby Sass Installation
 
@@ -111,7 +111,7 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 On your computer, simply run:
 
 ```sh
-bower install chroma-sass --save-dev
+bower install chroma --save-dev
 ```
 
 You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
@@ -121,6 +121,26 @@ You can then start using Chroma in your Sass files. Just add this line to one of
 ```
 
 Alternatively, you can add the `bower_components/chroma` path to your Sass tool's import paths and then use the simpler:
+
+```scss
+@import "chroma";
+```
+
+## NPM installation
+
+On your computer, simply run:
+
+```sh
+npm install chroma-sass --save-dev
+```
+
+You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
+
+```scss
+@import "../path/to/node_modules/chroma-sass/chroma";
+```
+
+Alternatively, you can add the `node_modules/chroma-sass` path to your Sass tool's import paths and then use the simpler:
 
 ```scss
 @import "chroma";

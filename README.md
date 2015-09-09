@@ -72,7 +72,7 @@ $chroma-active-scheme: 'functional';
 
 ## INSTALLATION
 
-Chroma can be installed via Ruby's Gem or via Bower. See [Chroma’s online documentation](http://johnalbin.github.io/chroma/) for more information.
+Chroma can be installed either as a Ruby Gem, as a Bower component, or as a NPM module. See [Chroma’s online documentation](http://johnalbin.github.io/chroma/) for more information.
 
 ## REQUIREMENTS
 
