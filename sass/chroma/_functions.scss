@@ -346,7 +346,7 @@ $chroma: _chroma-init();
       }
     }
     @else {
-      @error 'Unexpected value given for color "#{$color-name}".';
+      @error 'Unexpected value, "#{$color-value}", given for color "#{$color-name}".';
     }
   }
 
