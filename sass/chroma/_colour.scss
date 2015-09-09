@@ -47,13 +47,13 @@ $_chroma-spelling: 'colour';
   @return define-color-scheme($scheme, $description, $parent);
 }
 
-// define-default-colour-scheme($description)
+// define-default-colour-scheme([$name,] $description)
 //
 // See `define-default-color-scheme()` for the documentation.
 //
 // Style guide: colour.define-default-colour-scheme
-@function define-default-colour-scheme($description) {
-  @return define-color-scheme($CHROMA_DEFAULT_SCHEME, $description);
+@function define-default-colour-scheme($name, $description: null) {
+  @return define-default-color-scheme($name, $description);
 }
 
 // add-colours([$scheme,] $colours)
