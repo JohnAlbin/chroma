@@ -84,9 +84,11 @@ $chroma: _chroma-init();
   // Convert the color to a string.
   @if type-of($name) == 'color' {
     $name: inspect($name);
+
+    @return if(map-has-key($_chroma-css4-color-keywords, $name), map-get($_chroma-css4-color-keywords, $name), false);
   }
 
-  @return if(map-has-key($_chroma-css4-color-keywords, $name), map-get($_chroma-css4-color-keywords, $name), false);
+  @return false;
 }
 
 // chroma-to-string($name)
