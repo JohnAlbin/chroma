@@ -56,7 +56,7 @@ $chroma: _chroma-init();
     // Check if Sass _has_ converted the color into a hex value that we can't
     // convert back to a keyword.
     @else if map-has-key($_chroma-dangerous-converted-keywords, $name) {
-      @error "Sass has converted a color keyword into the hexidecimal value, #{$name}, and Chroma was not be able to determine if the original name was #{map-get($_chroma-dangerous-converted-keywords, $name)}. To prevent this error, use quotes around the keyword.";
+      @error "Sass has converted a #{$_chroma-spelling} keyword into the hexidecimal value, #{$name}, and Chroma was not be able to determine if the original name was #{map-get($_chroma-dangerous-converted-keywords, $name)}. To prevent this error, use quotes around the keyword.";
     }
   }
   @return false;
@@ -348,7 +348,7 @@ $chroma: _chroma-init();
       }
     }
     @else {
-      @error 'Unexpected value, "#{$color-value}", given for color "#{$color-name}".';
+      @error 'Unexpected value, "#{$color-value}", given for #{$_chroma-spelling} "#{$color-name}".';
     }
   }
 
