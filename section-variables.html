@@ -140,6 +140,15 @@ to function. Only public variables are documented.</p>
 
       <div class="kss-description">
         <p>The colors and meta-data managed by Chroma.</p>
+<p>Chroma stores all of its colors, color schemes, skins etc. in the global
+sass variable, <code>$chroma</code>. All of Chroma&#39;s configuration functions are
+designed to save their changes to the system by changing the value of the
+<code>$chroma</code> variable. For example: <code>$chroma: add-colors((kermit, #70af00));</code></p>
+<p>Note: since the <code>$chroma</code> variable is a complex map of data structures, it
+is highly recommended to only access <code>$chroma</code> through the functions and
+mixins provided and not attempt to read data from <code>$chroma</code> with Sass&#39;
+<code>map-get()</code> and <code>map-set()</code> functions. (If you find you need more helper
+functions, submit a feature request! We&#39;re happy to help.)</p>
 
       </div>
     </div>
@@ -215,8 +224,10 @@ $scheme parameter of most Chroma functions.</p>
 
 
       <div class="kss-description">
-        <p>The name of the default color scheme. There seems to be no reason to change
-this value, but Chroma won&#39;t stifle your creativity.</p>
+        <p>The name of the default color scheme; defaults to <code>default</code>. This variable
+is READ ONLY; changing its value will break Chroma.</p>
+<p>If you want to change this variable&#39;s value, you must use the
+<code>define-default-color-scheme()</code> function instead.</p>
 
       </div>
     </div>

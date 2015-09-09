@@ -68,7 +68,7 @@
             <li class="kss-nav__menu-item">
               <a href="section-functions.html#kssref-functions-define-default-color-scheme">
                 <span class="kss-nav__ref ">2.5</span
-                ><span class="kss-nav__name">define-default-color-scheme($description)</span>
+                ><span class="kss-nav__name">define-default-color-scheme([$name,] $description)</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
@@ -319,11 +319,15 @@ $chroma: define-color-scheme(taipei, &quot;Taipei&#39;s colors&quot;, $parent: t
                 #functions.define-default-color-scheme
             </span>
           </span>
-          define-default-color-scheme($description)
+          define-default-color-scheme([$name,] $description)
         </a>
       </h2>
 
       <ul class="kss-parameters">
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$name</code>
+          <div class="kss-parameters__description">Optional: default color scheme name; defaults to <code>default</code>.</div>
+        </li>
         <li class="kss-parameters__item">
           <code class="kss-parameters__name">$description</code>
           <div class="kss-parameters__description">Description of the default color scheme.</div>
@@ -334,6 +338,8 @@ $chroma: define-color-scheme(taipei, &quot;Taipei&#39;s colors&quot;, $parent: t
         <p>Sets the description of the default color scheme.</p>
 <p>Usage:</p>
 <pre><code class="lang-scss">$chroma: define-default-color-scheme(&#39;Default colors&#39;);
+// or:
+$chroma: define-default-color-scheme(&#39;branding&#39;, &#39;Basic branding colors&#39;);
 </code></pre>
 
       </div>

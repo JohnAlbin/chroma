@@ -72,6 +72,8 @@
   <div id="kssref-0" class="kss-section kss-section--depth-0 kss-overview kss-style">
      <h1 id="about-chroma">About Chroma</h1>
 <p>Chroma is a Sass library that manages a project&#39;s color names, color variations, and color schemes.</p>
+<h2 id="version">VERSION</h2>
+<p>These docs are for Chroma 1.0.0.</p>
 <h2 id="usage">USAGE</h2>
 <p>Here&#39;s a quick example of what you can do with Chroma.</p>
 <pre><code class="lang-scss">@import &quot;chroma&quot;;
@@ -137,7 +139,9 @@ $chroma-active-scheme: &#39;functional&#39;;
 }
 </code></pre>
 <h2 id="installation">INSTALLATION</h2>
-<p>Chroma is distributed as a Ruby Gem. On your computer, simply run:</p>
+<p>Chroma can be installed either as a Ruby Gem or as a Bower component.</p>
+<h2 id="ruby-sass-installation">Ruby Sass Installation</h2>
+<p>On your computer, simply run:</p>
 <pre><code class="lang-sh">gem install chroma-sass
 </code></pre>
 <p>If you are using Bundler (and you should!) then you can add it to an existing project by editing the project&#39;s Gemfile and adding this line:</p>
@@ -147,6 +151,16 @@ $chroma-active-scheme: &#39;functional&#39;;
 <pre><code class="lang-ruby">require &#39;chroma&#39;
 </code></pre>
 <p>You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!</p>
+<pre><code class="lang-scss">@import &quot;chroma&quot;;
+</code></pre>
+<h2 id="bower-installation">Bower installation</h2>
+<p>On your computer, simply run:</p>
+<pre><code class="lang-sh">bower install chroma-sass --save-dev
+</code></pre>
+<p>You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!</p>
+<pre><code class="lang-scss">@import &quot;../path/to/bower_components/chroma/chroma&quot;;
+</code></pre>
+<p>Alternatively, you can add the <code>bower_components/chroma</code> path to your Sass tool&#39;s import paths and then use the simpler:</p>
 <pre><code class="lang-scss">@import &quot;chroma&quot;;
 </code></pre>
 
