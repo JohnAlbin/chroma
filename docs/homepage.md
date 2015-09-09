@@ -117,10 +117,10 @@ bower install chroma --save-dev
 You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
 
 ```scss
-@import "../path/to/bower_components/chroma/chroma";
+@import "../path/to/bower_components/chroma/sass/chroma";
 ```
 
-Alternatively, you can add the `bower_components/chroma` path to your Sass tool's import paths and then use the simpler:
+Alternatively, you can add the `bower_components/chroma/sass` path to your Sass tool's import paths and then use the simpler:
 
 ```scss
 @import "chroma";
@@ -137,10 +137,10 @@ npm install chroma-sass --save-dev
 You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!
 
 ```scss
-@import "../path/to/node_modules/chroma-sass/chroma";
+@import "../path/to/node_modules/chroma-sass/sass/chroma";
 ```
 
-Alternatively, you can add the `node_modules/chroma-sass` path to your Sass tool's import paths and then use the simpler:
+Alternatively, you can add the `node_modules/chroma-sass/sass` path to your Sass tool's import paths and then use the simpler:
 
 ```scss
 @import "chroma";
