@@ -74,7 +74,7 @@
 <p>Chroma is a Sass library that manages a project&#39;s color names, color variations, and color schemes.</p>
 <p>The code for Chroma is available on GitHub: <a href="https://github.com/JohnAlbin/chroma">https://github.com/JohnAlbin/chroma</a></p>
 <h2 id="version">VERSION</h2>
-<p>These docs are for Chroma 1.0.0.</p>
+<p>These docs are for Chroma 1.0.1.</p>
 <h2 id="usage">USAGE</h2>
 <p>Here&#39;s a quick example of what you can do with Chroma.</p>
 <pre><code class="lang-scss">@import &quot;chroma&quot;;
@@ -140,7 +140,7 @@ $chroma-active-scheme: &#39;functional&#39;;
 }
 </code></pre>
 <h2 id="installation">INSTALLATION</h2>
-<p>Chroma can be installed either as a Ruby Gem or as a Bower component.</p>
+<p>Chroma can be installed either as a Ruby Gem, as a Bower component, or as a NPM module.</p>
 <h2 id="ruby-sass-installation">Ruby Sass Installation</h2>
 <p>On your computer, simply run:</p>
 <pre><code class="lang-sh">gem install chroma-sass
@@ -156,12 +156,22 @@ $chroma-active-scheme: &#39;functional&#39;;
 </code></pre>
 <h2 id="bower-installation">Bower installation</h2>
 <p>On your computer, simply run:</p>
-<pre><code class="lang-sh">bower install chroma-sass --save-dev
+<pre><code class="lang-sh">bower install chroma --save-dev
 </code></pre>
 <p>You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!</p>
 <pre><code class="lang-scss">@import &quot;../path/to/bower_components/chroma/chroma&quot;;
 </code></pre>
 <p>Alternatively, you can add the <code>bower_components/chroma</code> path to your Sass tool&#39;s import paths and then use the simpler:</p>
+<pre><code class="lang-scss">@import &quot;chroma&quot;;
+</code></pre>
+<h2 id="npm-installation">NPM installation</h2>
+<p>On your computer, simply run:</p>
+<pre><code class="lang-sh">npm install chroma-sass --save-dev
+</code></pre>
+<p>You can then start using Chroma in your Sass files. Just add this line to one of your .sass or .scss files and start creating!</p>
+<pre><code class="lang-scss">@import &quot;../path/to/node_modules/chroma-sass/chroma&quot;;
+</code></pre>
+<p>Alternatively, you can add the <code>node_modules/chroma-sass</code> path to your Sass tool&#39;s import paths and then use the simpler:</p>
 <pre><code class="lang-scss">@import &quot;chroma&quot;;
 </code></pre>
 
