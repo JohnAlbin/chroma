@@ -2,6 +2,8 @@
 
 Chroma is a Sass library that manages a project's color names, color variations, and color schemes.
 
+The code for Chroma is available on GitHub: https://github.com/JohnAlbin/chroma
+
 ## VERSION
 
 These docs are for Chroma 1.0.0.
