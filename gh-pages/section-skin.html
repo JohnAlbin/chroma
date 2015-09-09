@@ -54,8 +54,14 @@
               </a>
             </li>
             <li class="kss-nav__menu-item">
-              <a href="section-skin.html#kssref-skin-skin">
+              <a href="section-skin.html#kssref-skin-define-skins">
                 <span class="kss-nav__ref ">3.2</span
+                ><span class="kss-nav__name">define-skins($skins)</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-skin.html#kssref-skin-skin">
+                <span class="kss-nav__ref ">3.3</span
                 ><span class="kss-nav__name">skin([$skins])</span>
               </a>
             </li>
@@ -160,13 +166,50 @@ given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
 
 
       </section>
+      <section id="kssref-skin-define-skins" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-skin-define-skins">
+          <span class="kss-title__ref">
+              3.2
+            <span class="kss-title__permalink-hash">
+                #skin.define-skins
+            </span>
+          </span>
+          define-skins($skins)
+        </a>
+      </h2>
+
+      <ul class="kss-parameters">
+        <li class="kss-parameters__item">
+          <code class="kss-parameters__name">$skins</code>
+          <div class="kss-parameters__description">A list of color schemes and their A CSS parent selectors</div>
+        </li>
+      </ul>
+
+      <div class="kss-description">
+        <p>Helper function to define multiple skins at once.</p>
+<p>Usage:</p>
+<pre><code class="lang-scss">$chroma: define-skins((
+  &#39;scheme1&#39;: &#39;.is-scheme1-skin&#39;,
+  &#39;scheme2&#39;: &#39;.is-scheme2-skin&#39;,
+  &#39;scheme3&#39;: &#39;html &gt; body.this-works-but-is.way.too.specific.IMHO&#39;,
+));
+</code></pre>
+
+      </div>
+    </div>
+
+
+      </section>
       <section id="kssref-skin-skin" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-skin-skin">
           <span class="kss-title__ref">
-              3.2
+              3.3
             <span class="kss-title__permalink-hash">
                 #skin.skin
             </span>
