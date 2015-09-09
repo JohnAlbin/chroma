@@ -1,0 +1,30 @@
+@import "chroma/skin";
+
+$chroma: define-color-scheme(cyan);
+$chroma: define-color-scheme(yellow);
+$chroma: define-color-scheme(magenta);
+$chroma: define-color-scheme(key);
+
+$chroma: add-colors((
+  primary: blue,
+  element: 'primary',
+));
+
+// Override the primary color for each scheme.
+$chroma: add-colors(cyan,    (primary: cyan));
+$chroma: add-colors(yellow,  (primary: yellow));
+$chroma: add-colors(magenta, (primary: magenta));
+$chroma: add-colors(key,     (primary: black));
+
+$chroma: define-skins((
+  cyan: '.is-cyan-skin',
+  yellow: '.is-yellow-skin',
+  magenta: '.is-magenta-skin',
+  key: '.is-key-skin',
+));
+
+.test {
+  @include skin() {
+    color: color(element);
+  }
+}

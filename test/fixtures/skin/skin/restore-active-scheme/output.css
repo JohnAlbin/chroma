@@ -1,0 +1,16 @@
+.before {
+  active-scheme: "default"; }
+
+.test {
+  active-scheme: "default"; }
+  .is-cyan-skin .test {
+    active-scheme: cyan; }
+  .is-yellow-skin .test {
+    active-scheme: yellow; }
+  .is-magenta-skin .test {
+    active-scheme: magenta; }
+  .is-key-skin .test {
+    active-scheme: key; }
+
+.after {
+  active-scheme: "default"; }
