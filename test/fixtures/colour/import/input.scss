@@ -1,0 +1,5 @@
+@import 'chroma';
+
+.test {
+  auto-imported: if(function-exists('colour'), "true", "false");
+}

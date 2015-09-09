@@ -1,0 +1,11 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  my-color: #eee,
+  child-color: 'my-color',
+));
+
+.test {
+  colors: map-keys(map-get($chroma, 'names'));
+  ref-value: color(child-color);
+}

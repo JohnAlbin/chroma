@@ -1,0 +1,8 @@
+@import 'chroma';
+
+$chroma: _chroma-add-name('default', 'test', #123);
+
+.test {
+  color-exists: chroma-has-color('test');
+  color-does-not-exist: if(chroma-has-color('testFailure'), 'true', 'false');
+}

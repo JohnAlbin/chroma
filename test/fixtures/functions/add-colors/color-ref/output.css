@@ -1,0 +1,3 @@
+.test {
+  colors: "default::my-color", "default::child-color";
+  ref-value: #eee; }

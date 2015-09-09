@@ -1,0 +1,5 @@
+@import 'chroma/colour';
+
+.test {
+  dangerous-keyword: is-dangerous-colour-keyword(lightslategray);
+}

@@ -1,0 +1,8 @@
+.test {
+  uninitialized-length: 0; }
+
+.test {
+  initialized-length: 3;
+  chroma-keys: "schemes", "skins", "names";
+  chroma-schemes: "default";
+  default-scheme-keys: "description", "parent"; }

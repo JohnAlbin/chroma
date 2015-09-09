@@ -1,0 +1,17 @@
+@import 'chroma/colour';
+
+$chroma: define-colour-scheme('child', 'The child colour scheme');
+
+$chroma: add-colours((
+  white: #eee,
+  black: #111,
+));
+
+$chroma: add-colours(child, (
+  green: #0e0,
+  blue: #00e,
+));
+
+.test {
+  colours: map-keys(map-get($chroma, 'names'));
+}

@@ -1,0 +1,6 @@
+@import 'chroma/functions';
+
+.test {
+  keyword: chroma-to-string(white);
+  string: chroma-to-string('string');
+}

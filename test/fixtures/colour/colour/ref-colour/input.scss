@@ -1,0 +1,10 @@
+@import 'chroma/colour';
+
+$chroma: add-colours((
+  white: #eee,
+  ref-colour: 'white',
+));
+
+.test {
+  active-scheme-ref: colour(ref-colour);
+}

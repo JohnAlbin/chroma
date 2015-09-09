@@ -1,0 +1,11 @@
+@import 'chroma';
+
+$chroma: define-color-scheme('parent', 'test scheme');
+$chroma: define-color-scheme('child', 'test scheme', $parent: 'parent');
+
+$chroma: _chroma-add-name('parent', 'test', #123);
+
+.test {
+  color-exists: chroma-has-color('test', 'child');
+  color-does-not-exist: if(chroma-has-color('testFailure', 'child'), 'true', 'false');
+}

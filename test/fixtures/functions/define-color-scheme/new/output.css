@@ -1,0 +1,4 @@
+.test {
+  schemes: "default", "child", "grandchild";
+  child-parent: "default";
+  grandchild-parent: "child"; }

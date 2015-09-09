@@ -1,0 +1,9 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  white: #eee,
+));
+
+.test {
+  no-color: color(Earhart);
+}

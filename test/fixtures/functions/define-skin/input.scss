@@ -1,0 +1,16 @@
+@import 'chroma/functions';
+
+$chroma: define-color-scheme('child');
+$chroma: define-color-scheme('grandchild', $parent: 'child');
+
+$chroma: define-skin(child, '.is-child-skin');
+$chroma: define-skin(grandchild, '.is-grandchild-skin');
+
+.test {
+  skins: map-keys(map-get($chroma, 'skins'));
+  @each $skin, $selector in map-get($chroma, 'skins') {
+    #{$selector} {
+      skin-name: $skin;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+.test {
+  default-scheme: "branding";
+  schemes: "child", "branding";
+  description: "The description of the default colour scheme";
+  child-parent: "branding"; }

@@ -1,0 +1,10 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  white: #eee,
+));
+
+.test {
+  one-parameter: color(white);
+  two-parameers: color(default, white);
+}

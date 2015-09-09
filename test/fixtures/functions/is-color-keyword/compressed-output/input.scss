@@ -1,0 +1,6 @@
+@import 'chroma/functions';
+
+.test {
+  keyword: #00fa9a;
+  converted-keyword: is-color-keyword(#00fa9a);
+}

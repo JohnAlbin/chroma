@@ -1,0 +1,5 @@
+@import 'chroma';
+
+.test {
+  initialized-length: length($chroma);
+}

@@ -40,23 +40,35 @@ $chroma: _chroma-init();
 //
 // Style guide: functions.is-dangerous-color-keyword
 @function is-dangerous-color-keyword($name) {
+  // First, double-check if this is a keyword in a string.
+  @if _is-keyword-string($name) {
+    @return false;
+  }
+
   @if type-of($name) == 'color' {
-    // Convert the color to a string.
-    $name: inspect($name);
+    $lookup: '';
+    @if _is-old-libsass() {
+      // Forcibly convert a color keyword into a string with a "salt".
+      $lookup: "keyword:#{$name}";
+    }
+    @else {
+      // Convert the color to a string.
+      $lookup: inspect($name);
+    }
     // Check if Sass will convert the color into a hex value that we can't
     // convert back to a keyword.
-    @if map-has-key($_chroma-dangerous-keywords, $name) {
+    @if map-has-key($_chroma-dangerous-keywords, $lookup) {
       @if $chroma-die-on-dangerous-keyword {
-        @error "Sass will convert #{$name} into a hexidecimal value when it uses the \"compressed\" output style and Chroma will not be able to determine if the original name was #{map-get($_chroma-dangerous-keywords, $name)}. To prevent this error, quote the keyword like this: '#{$name}'.";
+        @error "Sass will convert #{$name} into a hexidecimal value when it uses the \"compressed\" output style and Chroma will not be able to determine if the original name was #{map-get($_chroma-dangerous-keywords, $lookup)}. To prevent this error, quote the keyword like this: '#{$name}'.";
       }
       @else {
-        @return map-get($_chroma-dangerous-keywords, $name);
+        @return map-get($_chroma-dangerous-keywords, $lookup);
       }
     }
     // Check if Sass _has_ converted the color into a hex value that we can't
     // convert back to a keyword.
-    @else if map-has-key($_chroma-dangerous-converted-keywords, $name) {
-      @error "Sass has converted a #{$_chroma-spelling} keyword into the hexidecimal value, #{$name}, and Chroma was not be able to determine if the original name was #{map-get($_chroma-dangerous-converted-keywords, $name)}. To prevent this error, use quotes around the keyword.";
+    @else if map-has-key($_chroma-dangerous-converted-keywords, $lookup) {
+      @error "Sass has converted a #{$_chroma-spelling} keyword into the hexidecimal value, #{$name}, and Chroma was not be able to determine if the original name was #{map-get($_chroma-dangerous-converted-keywords, $lookup)}. To prevent this error, use quotes around the keyword.";
     }
   }
   @return false;
@@ -71,6 +83,11 @@ $chroma: _chroma-init();
 //
 // Style guide: functions.is-color-keyword
 @function is-color-keyword($name) {
+  // First, double-check if this is a keyword in a string.
+  @if _is-keyword-string($name) {
+    @return false;
+  }
+
   // If a real Sass color is given, it is in danger of being converted to a
   // hexadecimal value before we can read the name. And some hex values map to
   // more than one keyword (e.g. gray and grey), so the original name would be
@@ -81,11 +98,19 @@ $chroma: _chroma-init();
   // $name so we can convert it to a string.
   $is-dangerous: is-dangerous-color-keyword($name);
 
-  // Convert the color to a string.
   @if type-of($name) == 'color' {
-    $name: inspect($name);
+    $lookup: '';
 
-    @return if(map-has-key($_chroma-css4-color-keywords, $name), map-get($_chroma-css4-color-keywords, $name), false);
+    @if _is-old-libsass() {
+      // Forcibly convert a color keyword into a string with a "salt".
+      $lookup: "keyword:#{$name}";
+    }
+    @else {
+      // Convert the color to a string.
+      $lookup: inspect($name);
+    }
+
+    @return if(map-has-key($_chroma-css4-color-keywords, $lookup), map-get($_chroma-css4-color-keywords, $lookup), false);
   }
 
   @return false;
@@ -308,7 +333,7 @@ $chroma: _chroma-init();
     // problems as map keys.
     $color-name: chroma-to-string($color-name);
     // If the value given is a color, just add it.
-    @if type_of($color-value) == 'color' {
+    @if type-of($color-value) == 'color' and not (_is-old-libsass() and _is-keyword-string($color-value)) {
       $chroma: _chroma-add-name($scheme, $color-name,
         $value          : $color-value,
         $reference      : false,
@@ -316,7 +341,7 @@ $chroma: _chroma-init();
       ) !global;
     }
     // If the value given is a reference to another color...
-    @else if type_of($color-value) == 'string' {
+    @else if type-of($color-value) == 'string' or (_is-old-libsass() and _is-keyword-string($color-value)) {
       $ref: $color-value;
       // Find the referenced color.
       $scheme-of-reference: chroma-has-color($ref, $scheme);

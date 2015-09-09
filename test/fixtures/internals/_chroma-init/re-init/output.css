@@ -1,0 +1,5 @@
+.test {
+  chroma-schemes: "default"; }
+
+.test {
+  chroma-schemes: "default", "test"; }

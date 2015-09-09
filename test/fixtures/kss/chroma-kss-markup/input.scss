@@ -1,0 +1,35 @@
+@import 'chroma/kss';
+
+// Define the default color scheme.
+$chroma: define-default-color-scheme('Descriptive color names for use in "functional" color names below.');
+
+// Add colors to the default color scheme.
+$chroma: add-colors((
+  'gray':     #999,
+  black:      #111,
+
+  blue:       #33f,
+  red:        #933,
+));
+
+// Create a "functional" color scheme that inherits from the default color scheme.
+$chroma: define-color-scheme('functional', 'Colors used by functional parts of the design.');
+
+// Add colors to the functional color scheme.
+$chroma: add-colors('functional', (
+  text:       'black',
+  primary:    'blue',
+  link:       'primary',
+));
+
+// Create an "alternate" color scheme that inherits from the "functional" color scheme.
+$chroma: define-color-scheme('alternate', 'Alternate colors for the site.', 'functional');
+
+// Add colors to the alternate color scheme.
+$chroma: add-colors('alternate', (
+  primary:    'red',
+));
+
+/*
+#{chroma-kss-markup()}
+*/

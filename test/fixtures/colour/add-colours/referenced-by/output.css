@@ -1,0 +1,4 @@
+.test {
+  colours: "default::my-colour", "default::child-colour", "default::grandchild-colour";
+  my-colour-references: child-colour grandchild-colour;
+  child-colour-references: grandchild-colour; }

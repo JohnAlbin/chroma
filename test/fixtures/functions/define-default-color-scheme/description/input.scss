@@ -1,0 +1,7 @@
+@import 'chroma/functions';
+
+$chroma: define-default-color-scheme('The description of the default color scheme');
+
+.test {
+  description: map-get(map-get(map-get($chroma, 'schemes'), 'default'), 'description');
+}

@@ -1,0 +1,6 @@
+@import 'chroma/colour';
+
+$chroma: add-colours(child, (
+  green: #0e0,
+  blue: #00e,
+));

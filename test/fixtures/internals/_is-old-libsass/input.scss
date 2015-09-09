@@ -1,0 +1,5 @@
+@import 'chroma';
+
+.test {
+  is-old-libsass: if(_is-old-libsass(), "true", "false");
+}

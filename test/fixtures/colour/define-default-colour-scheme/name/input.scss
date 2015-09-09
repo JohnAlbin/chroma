@@ -1,0 +1,11 @@
+@import 'chroma/colour';
+
+$chroma: define-colour-scheme('child');
+$chroma: define-default-colour-scheme('branding', 'The description of the default colour scheme');
+
+.test {
+  default-scheme: $CHROMA_DEFAULT_SCHEME;
+  schemes: chroma-schemes();
+  description: map-get(map-get(map-get($chroma, 'schemes'), 'branding'), 'description');
+  child-parent: map-get(map-get(map-get($chroma, 'schemes'), 'child'), 'parent');
+}

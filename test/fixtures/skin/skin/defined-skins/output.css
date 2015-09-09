@@ -1,0 +1,10 @@
+.test {
+  color: blue; }
+  .is-cyan-skin .test {
+    color: cyan; }
+  .is-yellow-skin .test {
+    color: yellow; }
+  .is-magenta-skin .test {
+    color: magenta; }
+  .is-key-skin .test {
+    color: black; }

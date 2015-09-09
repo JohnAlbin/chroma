@@ -1,0 +1,6 @@
+.test {
+  skins: child, grandchild; }
+  .test .is-child-skin {
+    skin-name: child; }
+  .test .is-grandchild-skin {
+    skin-name: grandchild; }

@@ -1,0 +1,9 @@
+@import 'chroma/colour';
+
+$chroma: add-colours((
+  white: #eee,
+));
+
+.test {
+  active-scheme: colour(white);
+}
