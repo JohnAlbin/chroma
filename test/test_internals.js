@@ -1,16 +1,10 @@
 'use strict';
 
-var path = require('path'),
-  should = require('chai').should(),
-  sassyTest = require('sassy-test');
-
 describe('@import "chroma/internals";', function() {
   before(function(done) {
     sassyTest.configurePaths({
       // Path to this suite's fixtures.
-      fixtures: path.join(__dirname, 'fixtures/internals'),
-      // Path to Chroma.
-      library: path.join(__dirname, '../sass')
+      fixtures: path.join(__dirname, 'fixtures/internals')
     });
     done();
   });

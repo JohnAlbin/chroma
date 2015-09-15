@@ -17,7 +17,7 @@
     "chai": "^3.2.0",
     "kss": "kss-node/kss-node",
     "mocha": "^2.2.5",
-    "sassy-test": "^1.0.0"
+    "sassy-test": "^1.0.1"
   },
   "scripts": {
     "test": "mocha",
