@@ -1,8 +1,10 @@
 .test {
-  colors-exist: "default::test", "default::test-parent", "default::test-ref";
+  colors-exist: "default::test", "default::test-parent", "default::test-ref", "default::test-function";
   color-has-defaults: false;
   color-has-defaults: 0;
   parent-has-values: false;
-  parent-has-values: "test-ref";
+  parent-has-values: "test-ref", "test-function";
   ref-has-values: "test-parent";
-  ref-has-values: 0; }
+  ref-has-values: 0;
+  function-has-values: "adjust_color";
+  parameters-has-values: 5 -7; }

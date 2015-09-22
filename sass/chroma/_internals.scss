@@ -52,13 +52,15 @@
 // variable.
 //
 // Style guide: internals._chroma-add-name
-@function _chroma-add-name($scheme, $name, $value: false, $reference: false, $referenced_by: ()) {
+@function _chroma-add-name($scheme, $name, $value: false, $reference: false, $referenced_by: (), $function: false, $parameters: ()) {
   $names: map-merge(
     map-get($chroma, 'names'),
     ("#{$scheme}::#{$name}": (
       value         : $value,
       reference     : $reference,
       referenced_by : $referenced_by,
+      function      : $function,
+      parameters    : $parameters,
     ))
   );
 
