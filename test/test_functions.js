@@ -169,6 +169,14 @@ describe('@import "chroma/functions";', function() {
       });
     });
 
+    it('should error if the color reference does not exist', function(done) {
+      sassyTest.renderFixture('add-colors/error-ref', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The color "bermuda" was not found when adding the color "blue".');
+        done();
+      });
+    });
+
     it('should error if the color value is not a color or a string', function(done) {
       sassyTest.renderFixture('add-colors/error-value', {}, function(error, result, expectedOutput) {
         error.should.exist;
