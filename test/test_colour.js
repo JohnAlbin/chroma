@@ -217,5 +217,27 @@ describe('@import "chroma/colour";', function() {
         done();
       });
     });
+
+    it('should add colour names that have function variations', function(done) {
+      sassyTest.renderFixture('add-colours/function', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should add colour names that have function variations and are references', function(done) {
+      sassyTest.renderFixture('add-colours/function-ref', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should error if the colour function does not exist', function(done) {
+      sassyTest.renderFixture('add-colours/error-function', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The function "nonexistant-function" was not found when adding the colour "green".');
+        done();
+      });
+    });
   });
 });

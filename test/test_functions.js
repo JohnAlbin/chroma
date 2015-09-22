@@ -219,6 +219,28 @@ describe('@import "chroma/functions";', function() {
         done();
       });
     });
+
+    it('should add color names that have function variations', function(done) {
+      sassyTest.renderFixture('add-colors/function', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should add color names that have function variations and are references', function(done) {
+      sassyTest.renderFixture('add-colors/function-ref', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should error if the color function does not exist', function(done) {
+      sassyTest.renderFixture('add-colors/error-function', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The function "nonexistant-function" was not found when adding the color "green".');
+        done();
+      });
+    });
   });
 
   describe('@function define-skin()', function() {

@@ -1,0 +1,9 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  medium-gray: (#999 lighten 20%),
+));
+
+.test {
+  color: color(medium-gray);
+}
