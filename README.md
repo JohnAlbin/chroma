@@ -95,10 +95,7 @@ Chroma can be installed either as a Ruby Gem, as a Bower component, or as a NPM 
 ## REQUIREMENTS
 
 * Sass 3.4.0 or later
-
-Note: libsass 3.2.5 or earlier does not work with chroma-sass due to a bug in
-libsass. ☹ libsass 3.3.0 should fix the bug, but it has not been tested. See
-https://github.com/JohnAlbin/chroma/issues/10
+* Or LibSass 3.2.5 or later.
 
 ## LICENSE
 
