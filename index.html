@@ -74,21 +74,25 @@
 <p>Chroma is a Sass library that manages a project&#39;s color names, color variations, and color schemes.</p>
 <p>The code for Chroma is available on GitHub: <a href="https://github.com/JohnAlbin/chroma">https://github.com/JohnAlbin/chroma</a></p>
 <h2 id="version">VERSION</h2>
-<p>These docs are for Chroma 1.0.1.</p>
+<p>These docs are for Chroma 1.1.0.</p>
 <h2 id="usage">USAGE</h2>
 <p>Here&#39;s a quick example of what you can do with Chroma.</p>
 <pre><code class="lang-scss">@import &quot;chroma&quot;;
 
 // Define the default color scheme.
-$chroma: define-default-color-scheme(&#39;Descriptive color names for use in &quot;functional&quot; color names below.&#39;);
+$chroma: define-default-color-scheme(&#39;Branding color names for use by &quot;functional&quot; color names below.&#39;);
 
 // Add colors to the default color scheme.
 $chroma: add-colors((
   white:       #fff,
-  grey-medium: #706e6c,
   black:       #000,
   blue:        #0e71b8,
   red:         #c00,
+
+  // Define a primary highlight color that has the value of our &quot;blue&quot; color.
+  // Note: if blue was specified without quotes, Chroma would interpret that as
+  // the color keyword blue and not a reference to the &quot;blue&quot; color name.
+  primary:     &#39;blue&#39;,
 ));
 
 // Create a &quot;functional&quot; color scheme that inherits from the default color scheme.
@@ -96,19 +100,20 @@ $chroma: define-color-scheme(&#39;functional&#39;, &#39;Colors used by functiona
 
 // Add colors to the functional color scheme.
 $chroma: add-colors(&#39;functional&#39;, (
-  // Define a primary highlight color.
-  primary:     &#39;blue&#39;,
-
   // Have the &quot;text&quot; color use the hex value given to the &quot;black&quot; color. Even
   // though the &quot;functional&quot; color scheme doesn&#39;t define &quot;black&quot;, it inherits
   // from the &quot;default&quot; color scheme where &quot;black&quot; is defined.
   text:        &#39;black&#39;,
 
-  // Colors can inherit from colors named earlier in the call to add-colors().
-  heading:     &#39;text&#39;,
+  // You can use quoted or unquoted strings to reference other color names.
+  // Note: color keywords are not considered strings unless they are quoted.
+  heading:     text,
 
   // Have the link color use the primary color.
-  link:        &#39;primary&#39;,
+  link:        primary,
+  link-focus:  (link lighten 20%), // Set the link-focus color to the &quot;link&quot;
+                                   // color passed through the color
+                                   // function: lighten([color], 20%)
 ));
 
 // Create an &quot;alternate&quot; color scheme that inherits from the &quot;functional&quot; color scheme.
@@ -128,13 +133,26 @@ $chroma-active-scheme: &#39;functional&#39;;
     // Outputs #000.
     color: color(heading);
   }
+
   a {
     // Outputs #0e71b8.
     color: color(link);
 
+    &amp;:focus,
+    &amp;:hover {
+      // Outputs #3ca5f0, which is lighten(#0e71b8, 20%).
+      color: color(link-focus);
+    }
+
     .alternate-color-section &amp; {
       // Outputs #c00.
       color: color(alternate, link);
+
+      &amp;:focus,
+      &amp;:hover {
+        // Outputs #ff3333, which is lighten(#c00, 20%).
+        color: color(alternate, link-focus);
+      }
     }
   }
 }
