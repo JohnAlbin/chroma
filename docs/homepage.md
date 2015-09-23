@@ -6,7 +6,7 @@ The code for Chroma is available on GitHub: https://github.com/JohnAlbin/chroma
 
 ## VERSION
 
-These docs are for Chroma 1.0.1.
+These docs are for Chroma 1.1.0.
 
 ## USAGE
 
