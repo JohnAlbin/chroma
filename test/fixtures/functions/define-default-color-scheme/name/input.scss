@@ -5,6 +5,7 @@ $chroma: define-default-color-scheme('branding', 'The description of the default
 
 .test {
   default-scheme: $CHROMA_DEFAULT_SCHEME;
+  active-scheme: $chroma-active-scheme;
   schemes: chroma-schemes();
   description: map-get(map-get(map-get($chroma, 'schemes'), 'branding'), 'description');
   child-parent: map-get(map-get(map-get($chroma, 'schemes'), 'child'), 'parent');

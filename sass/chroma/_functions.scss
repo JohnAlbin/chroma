@@ -296,7 +296,10 @@ $chroma: _chroma-init();
       );
     }
   }
-  // Set the new default scheme name.
+  // Set the new default scheme name and, if needed, the new active scheme.
+  @if $chroma-active-scheme == $CHROMA_DEFAULT_SCHEME {
+    $chroma-active-scheme: $name !global;
+  }
   $CHROMA_DEFAULT_SCHEME: $name !global;
   // Add the default scheme (and the updated schemes) back into $chroma.
   @return map-merge(

@@ -1,5 +1,6 @@
 .test {
   default-scheme: "branding";
+  active-scheme: "branding";
   schemes: "child", "branding";
   description: "The description of the default color scheme";
   child-parent: "branding"; }
