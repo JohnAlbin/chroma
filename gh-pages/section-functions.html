@@ -167,17 +167,20 @@
       <div class="kss-description">
         <p>Add the colors to an existing color scheme.</p>
 <p>Usage:</p>
-<pre><code class="lang-scss">$my-colors: add-colors(&#39;admiral&#39;, (
- nav:             &#39;link&#39;,
- nav-visited:     color(link-visited),
- nav-focus:       color(link-focus),
+<pre><code class="lang-scss">$chroma: add-colors(&#39;admiral&#39;, (
+ link:        #0000cc,
+ nav:         link, // Sets this color to the same value as the &quot;link&quot; color.
+ nav-visited: (nav darken 20%), // Takes the &quot;nav&quot; color and passes it
+                                // through darken([color], 20%)
+ nav-focus:   (nav lighten 10%),
 ));
 </code></pre>
 <p>If you wish to add colors to the active scheme, you can just use:</p>
-<pre><code class="lang-scss">$my-colors: add-colors((
- nav:             &#39;link&#39;,
- nav-visited:     color(link-visited),
- nav-focus:       color(link-focus),
+<pre><code class="lang-scss">$chroma: add-colors((
+ link:        #0000cc,
+ nav:         link,
+ nav-visited: (link darken 20%),
+ nav-focus:   (link lighten 10%),
 ));
 </code></pre>
 

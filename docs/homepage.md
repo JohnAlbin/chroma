@@ -16,15 +16,19 @@ Here's a quick example of what you can do with Chroma.
 @import "chroma";
 
 // Define the default color scheme.
-$chroma: define-default-color-scheme('Descriptive color names for use in "functional" color names below.');
+$chroma: define-default-color-scheme('Branding color names for use by "functional" color names below.');
 
 // Add colors to the default color scheme.
 $chroma: add-colors((
   white:       #fff,
-  grey-medium: #706e6c,
   black:       #000,
   blue:        #0e71b8,
   red:         #c00,
+
+  // Define a primary highlight color that has the value of our "blue" color.
+  // Note: if blue was specified without quotes, Chroma would interpret that as
+  // the color keyword blue and not a reference to the "blue" color name.
+  primary:     'blue',
 ));
 
 // Create a "functional" color scheme that inherits from the default color scheme.
@@ -32,19 +36,20 @@ $chroma: define-color-scheme('functional', 'Colors used by functional parts of t
 
 // Add colors to the functional color scheme.
 $chroma: add-colors('functional', (
-  // Define a primary highlight color.
-  primary:     'blue',
-
   // Have the "text" color use the hex value given to the "black" color. Even
   // though the "functional" color scheme doesn't define "black", it inherits
   // from the "default" color scheme where "black" is defined.
   text:        'black',
 
-  // Colors can inherit from colors named earlier in the call to add-colors().
-  heading:     'text',
+  // You can use quoted or unquoted strings to reference other color names.
+  // Note: color keywords are not considered strings unless they are quoted.
+  heading:     text,
 
   // Have the link color use the primary color.
-  link:        'primary',
+  link:        primary,
+  link-focus:  (link lighten 20%), // Set the link-focus color to the "link"
+                                   // color passed through the color
+                                   // function: lighten([color], 20%)
 ));
 
 // Create an "alternate" color scheme that inherits from the "functional" color scheme.
@@ -64,13 +69,26 @@ $chroma-active-scheme: 'functional';
     // Outputs #000.
     color: color(heading);
   }
+
   a {
     // Outputs #0e71b8.
     color: color(link);
 
+    &:focus,
+    &:hover {
+      // Outputs #3ca5f0, which is lighten(#0e71b8, 20%).
+      color: color(link-focus);
+    }
+
     .alternate-color-section & {
       // Outputs #c00.
       color: color(alternate, link);
+
+      &:focus,
+      &:hover {
+        // Outputs #ff3333, which is lighten(#c00, 20%).
+        color: color(alternate, link-focus);
+      }
     }
   }
 }

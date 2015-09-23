@@ -78,20 +78,32 @@
               </a>
             </li>
             <li class="kss-nav__menu-item">
-              <a href="section-internals.html#kssref-internals-chroma-has-color">
+              <a href="section-internals.html#kssref-internals-_is-keyword-string">
                 <span class="kss-nav__ref ">6.3</span
+                ><span class="kss-nav__name">_is-keyword-string($name)</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-internals.html#kssref-internals-_is-old-libsass">
+                <span class="kss-nav__ref ">6.4</span
+                ><span class="kss-nav__name">is-old-libsass()</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-internals.html#kssref-internals-chroma-has-color">
+                <span class="kss-nav__ref ">6.5</span
                 ><span class="kss-nav__name">chroma-has-color($name [, $scheme])</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
               <a href="section-internals.html#kssref-internals-chroma-has-scheme">
-                <span class="kss-nav__ref ">6.4</span
+                <span class="kss-nav__ref ">6.6</span
                 ><span class="kss-nav__name">chroma-has-scheme($scheme)</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
               <a href="section-internals.html#kssref-internals-chroma-schemes">
-                <span class="kss-nav__ref ">6.5</span
+                <span class="kss-nav__ref ">6.7</span
                 ><span class="kss-nav__name">chroma-schemes()</span>
               </a>
             </li>
@@ -177,13 +189,80 @@ variable. Can be called repeatedly without damaging existing data.</p>
 
 
       </section>
+      <section id="kssref-internals-_is-keyword-string" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-internals-_is-keyword-string">
+          <span class="kss-title__ref">
+              6.3
+            <span class="kss-title__permalink-hash">
+                #internals._is-keyword-string
+            </span>
+          </span>
+          _is-keyword-string($name)
+        </a>
+      </h2>
+
+
+      <div class="kss-description">
+        <p>Normally, <code>type-of()</code> can be used to tell if a given value is a string. But
+LibSass versions before 3.3.0 think that color keywords in strings are still
+colors and not strings. This function works, regardless of LibSass bugs.</p>
+<p>@TODO: Remove when LibSass 3.2.5 support is dropped.</p>
+
+      </div>
+    </div>
+
+
+      </section>
+      <section id="kssref-internals-_is-old-libsass" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-internals-_is-old-libsass">
+          <span class="kss-title__ref">
+              6.4
+            <span class="kss-title__permalink-hash">
+                #internals._is-old-libsass
+            </span>
+          </span>
+          is-old-libsass()
+        </a>
+      </h2>
+
+
+      <div class="kss-description">
+        <p>libsass before 3.3.0 is funky, making it very hard for Chroma to do its job.</p>
+<ul>
+<li><code>inspect([color])</code> returns the original value instead of returning the
+string equivalent, so you can&#39;t cast a color to a string.</li>
+<li><code>type-of(&#39;[color keyword]&#39;)</code> thinks that these strings are colors.</li>
+<li><code>map-has-key()</code> works properly, thankfully. So:<ul>
+<li><code>map-has-key((white: &#39;&#39;), white)</code> correctly returns <code>true</code></li>
+<li><code>map-has-key((&#39;white&#39;: &#39;&#39;), &#39;white&#39;)</code> correctly returns <code>true</code></li>
+<li><code>map-has-key((white: &#39;&#39;), &#39;white&#39;)</code> correctly returns <code>false</code></li>
+<li><code>map-has-key((&#39;white&#39;: &#39;&#39;), white)</code> correctly returns <code>false</code>
+This means we can cobble together a replacement for <code>type-of()</code>. And a
+partial replacement for <code>inspect()</code> that works for everything except
+dangerous color keywords.</li>
+</ul>
+</li>
+</ul>
+<p>@TODO: Remove when LibSass 3.2.5 support is dropped.</p>
+
+      </div>
+    </div>
+
+
+      </section>
       <section id="kssref-internals-chroma-has-color" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-internals-chroma-has-color">
           <span class="kss-title__ref">
-              6.3
+              6.5
             <span class="kss-title__permalink-hash">
                 #internals.chroma-has-color
             </span>
@@ -208,7 +287,7 @@ Returns false or a string of the scheme name that contains the color.</p>
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-internals-chroma-has-scheme">
           <span class="kss-title__ref">
-              6.4
+              6.6
             <span class="kss-title__permalink-hash">
                 #internals.chroma-has-scheme
             </span>
@@ -232,7 +311,7 @@ Returns false or a string of the scheme name that contains the color.</p>
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-internals-chroma-schemes">
           <span class="kss-title__ref">
-              6.5
+              6.7
             <span class="kss-title__permalink-hash">
                 #internals.chroma-schemes
             </span>
