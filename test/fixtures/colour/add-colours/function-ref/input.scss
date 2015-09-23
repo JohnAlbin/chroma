@@ -1,0 +1,12 @@
+@import 'chroma/colour';
+
+$chroma: add-colors((
+  medium-gray: (#999 lighten 20%),
+  ref-function: (medium-gray darken 40%),
+  ref-ref-function: (ref-function darken 20%),
+));
+
+.test {
+  ref: color(ref-function);
+  ref-ref: color(ref-ref-function);
+}

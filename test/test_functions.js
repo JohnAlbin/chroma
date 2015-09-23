@@ -118,6 +118,13 @@ describe('@import "chroma/functions";', function() {
         done();
       });
     });
+
+    it('should find a color that references another scheme’s color that is overridden and has a function', function(done) {
+      sassyTest.renderFixture('color/ref-color-scheme-overridden-function', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
   });
 
   describe('@function define-color-scheme()', function() {
@@ -216,6 +223,28 @@ describe('@import "chroma/functions";', function() {
     it('should add the color name to the "referenced by" list for each referenced color', function(done) {
       sassyTest.renderFixture('add-colors/referenced-by', {}, function(error, result, expectedOutput) {
         should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should add color names that have function variations', function(done) {
+      sassyTest.renderFixture('add-colors/function', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should add color names that have function variations and are references', function(done) {
+      sassyTest.renderFixture('add-colors/function-ref', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should error if the color function does not exist', function(done) {
+      sassyTest.renderFixture('add-colors/error-function', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The function "nonexistant-function" was not found when adding the color "green".');
         done();
       });
     });

@@ -1,8 +1,9 @@
 @import 'chroma';
 
 $chroma: _chroma-add-name('default', 'test', #123);
-$chroma: _chroma-add-name('default', 'test-parent', #456, false, ('test-ref'));
+$chroma: _chroma-add-name('default', 'test-parent', #456, false, ('test-ref', 'test-function'));
 $chroma: _chroma-add-name('default', 'test-ref', false, 'test-parent');
+$chroma: _chroma-add-name('default', 'test-function', false, 'test-parent', (), 'adjust_color', (5 -7));
 
 .test {
   colors-exist: map-keys(map-get($chroma, 'names'));
@@ -14,4 +15,7 @@ $chroma: _chroma-add-name('default', 'test-ref', false, 'test-parent');
 
   ref-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-ref'), 'reference');
   ref-has-values: length(map-get(map-get(map-get($chroma, 'names'), 'default::test-ref'), 'referenced_by'));
+
+  function-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-function'), 'function');
+  parameters-has-values: map-get(map-get(map-get($chroma, 'names'), 'default::test-function'), 'parameters');
 }

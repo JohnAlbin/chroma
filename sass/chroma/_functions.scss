@@ -178,13 +178,34 @@ $chroma: _chroma-init();
     // and its parent schemes. But one or more of the parent colors may be
     // defined (overridden) in $scheme too, so we need to check the full
     // reference chain.
+    $chain: ();
     $ref: map-get($color, 'reference');
+    @if $ref and map-get($color, 'function') {
+      $chain: append($chain, $color);
+    }
     @while $ref {
       $actual-scheme: chroma-has-color($ref, $scheme);
       $color: map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$ref}");
       $ref: map-get($color, 'reference');
+      // Save any color that has a function unless it is the final color in the
+      // reference chain.
+      @if $ref and map-get($color, 'function') {
+        $chain: append($chain, $color);
+      }
     }
-    @return map-get($color, 'value');
+    // Find the value for the last non-reference in the chain.
+    $value: map-get($color, 'value');
+    // If the reference chain contains functions, we need to recalculate all
+    // the values back up the chain.
+    @if length($chain) > 0 {
+      @for $i from length($chain) through 1 {
+        $function: map-get(nth($chain, $i), 'function');
+        $parameters: map-get(nth($chain, $i), 'parameters');
+        $parameters: set-nth($parameters, 1, $value);
+        $value: call($function, $parameters...);
+      }
+    }
+    @return $value;
   }
 }
 
@@ -296,19 +317,22 @@ $chroma: _chroma-init();
 //
 // Usage:
 // ```scss
-// $my-colors: add-colors('admiral', (
-//  nav:             'link',
-//  nav-visited:     color(link-visited),
-//  nav-focus:       color(link-focus),
+// $chroma: add-colors('admiral', (
+//  link:        #0000cc,
+//  nav:         link, // Sets this color to the same value as the "link" color.
+//  nav-visited: (nav darken 20%), // Takes the "nav" color and passes it
+//                                 // through darken([color], 20%)
+//  nav-focus:   (nav lighten 10%),
 // ));
 // ```
 //
 // If you wish to add colors to the active scheme, you can just use:
 // ```scss
-// $my-colors: add-colors((
-//  nav:             'link',
-//  nav-visited:     color(link-visited),
-//  nav-focus:       color(link-focus),
+// $chroma: add-colors((
+//  link:        #0000cc,
+//  nav:         link,
+//  nav-visited: (link darken 20%),
+//  nav-focus:   (link lighten 10%),
 // ));
 // ```
 //
@@ -332,12 +356,33 @@ $chroma: _chroma-init();
     // Cast the color name to a string to ensure color keywords do not cause
     // problems as map keys.
     $color-name: chroma-to-string($color-name);
+    $color-function: false;
+    $color-parameters: ();
+    // If the "value" is a list, its a value plus a function.
+    @if type-of($color-value) == 'list' {
+      $color-function: nth($color-value, 2);
+      @if not function_exists($color-function) {
+        @error 'The function "#{$color-function}" was not found when adding the #{$_chroma-spelling} "#{$color-name}".';
+      }
+      // Include the color value in the list of function parameters.
+      @for $i from 1 through length($color-value) {
+        @if $i != 2 {
+          $color-parameters: append($color-parameters, nth($color-value, $i));
+        }
+      }
+      $color-value: nth($color-value, 1);
+    }
     // If the value given is a color, just add it.
     @if type-of($color-value) == 'color' and not (_is-old-libsass() and _is-keyword-string($color-value)) {
+      @if $color-function {
+        $color-value: call($color-function, $color-parameters...);
+      }
       $chroma: _chroma-add-name($scheme, $color-name,
         $value          : $color-value,
         $reference      : false,
-        $referenced_by  : ()
+        $referenced_by  : (),
+        $function       : $color-function,
+        $parameters     : $color-parameters
       ) !global;
     }
     // If the value given is a reference to another color...
@@ -350,10 +395,17 @@ $chroma: _chroma-init();
       }
       $referenced-color: map-get(map-get($chroma, 'names'), "#{$scheme-of-reference}::#{$ref}");
       // Add the new color.
+      $new-value: map-get($referenced-color, 'value');
+      @if $color-function {
+        $color-parameters: set-nth($color-parameters, 1, $new-value);
+        $new-value: call($color-function, $color-parameters...);
+      }
       $chroma: _chroma-add-name($scheme, $color-name,
-        $value         : map-get($referenced-color, 'value'),
+        $value         : $new-value,
         $reference     : $ref,
-        $referenced_by : ()
+        $referenced_by : (),
+        $function      : $color-function,
+        $parameters    : $color-parameters
       ) !global;
       // Document the new color in all the referenced_by lists.
       @while $ref {
@@ -363,7 +415,9 @@ $chroma: _chroma-init();
           $referenced_by : append(
             map-get($referenced-color, 'referenced_by'),
             $color-name
-          )
+          ),
+          $function      : map-get($referenced-color, 'function'),
+          $parameters    : map-get($referenced-color, 'parameters')
         ) !global;
         $ref: map-get($referenced-color, 'reference');
         @if $ref {
