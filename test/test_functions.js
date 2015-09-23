@@ -118,6 +118,13 @@ describe('@import "chroma/functions";', function() {
         done();
       });
     });
+
+    it('should find a color that references another scheme’s color that is overridden and has a function', function(done) {
+      sassyTest.renderFixture('color/ref-color-scheme-overridden-function', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
   });
 
   describe('@function define-color-scheme()', function() {

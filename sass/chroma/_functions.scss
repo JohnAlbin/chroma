@@ -178,13 +178,34 @@ $chroma: _chroma-init();
     // and its parent schemes. But one or more of the parent colors may be
     // defined (overridden) in $scheme too, so we need to check the full
     // reference chain.
+    $chain: ();
     $ref: map-get($color, 'reference');
+    @if $ref and map-get($color, 'function') {
+      $chain: append($chain, $color);
+    }
     @while $ref {
       $actual-scheme: chroma-has-color($ref, $scheme);
       $color: map-get(map-get($chroma, 'names'), "#{$actual-scheme}::#{$ref}");
       $ref: map-get($color, 'reference');
+      // Save any color that has a function unless it is the final color in the
+      // reference chain.
+      @if $ref and map-get($color, 'function') {
+        $chain: append($chain, $color);
+      }
     }
-    @return map-get($color, 'value');
+    // Find the value for the last non-reference in the chain.
+    $value: map-get($color, 'value');
+    // If the reference chain contains functions, we need to recalculate all
+    // the values back up the chain.
+    @if length($chain) > 0 {
+      @for $i from length($chain) through 1 {
+        $function: map-get(nth($chain, $i), 'function');
+        $parameters: map-get(nth($chain, $i), 'parameters');
+        $parameters: set-nth($parameters, 1, $value);
+        $value: call($function, $parameters...);
+      }
+    }
+    @return $value;
   }
 }
 
