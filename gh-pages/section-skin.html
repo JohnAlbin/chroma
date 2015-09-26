@@ -48,21 +48,21 @@
         </a>
         <ul class="kss-nav__menu-child">
             <li class="kss-nav__menu-item">
-              <a href="section-skin.html#kssref-skin-define-skin">
-                <span class="kss-nav__ref ">3.1</span
-                ><span class="kss-nav__name">define-skin($scheme, $selector)</span>
-              </a>
-            </li>
-            <li class="kss-nav__menu-item">
               <a href="section-skin.html#kssref-skin-define-skins">
-                <span class="kss-nav__ref ">3.2</span
+                <span class="kss-nav__ref ">3.1</span
                 ><span class="kss-nav__name">define-skins($skins)</span>
               </a>
             </li>
             <li class="kss-nav__menu-item">
               <a href="section-skin.html#kssref-skin-skin">
-                <span class="kss-nav__ref ">3.3</span
+                <span class="kss-nav__ref ">3.2</span
                 ><span class="kss-nav__name">skin([$skins])</span>
+              </a>
+            </li>
+            <li class="kss-nav__menu-item">
+              <a href="section-skin.html#kssref-skin-define-skin">
+                <span class="kss-nav__ref ">3.3</span
+                ><span class="kss-nav__name">define-skin($scheme, $selector)</span>
               </a>
             </li>
         </ul>
@@ -128,51 +128,13 @@ to use for that skin.</p>
 
 
       </div>
-      <section id="kssref-skin-define-skin" class="kss-section kss-section--depth-2">
-
-    <div class="kss-style">
-      <h2 class="kss-title kss-title--level-2">
-        <a class="kss-title__permalink" href="#kssref-skin-define-skin">
-          <span class="kss-title__ref">
-              3.1
-            <span class="kss-title__permalink-hash">
-                #skin.define-skin
-            </span>
-          </span>
-          define-skin($scheme, $selector)
-        </a>
-      </h2>
-
-      <ul class="kss-parameters">
-        <li class="kss-parameters__item">
-          <code class="kss-parameters__name">$scheme</code>
-          <div class="kss-parameters__description">Name of the color scheme to use when the <code>$selector</code> matches our HTML.</div>
-        </li>
-        <li class="kss-parameters__item">
-          <code class="kss-parameters__name">$selector</code>
-          <div class="kss-parameters__description">A CSS parent selector that triggers the use of the defined <code>$scheme</code> instead of the default color scheme. We recommend using a simple CSS selector like <code>.is-CUSTOMNAME-skin</code>.</div>
-        </li>
-      </ul>
-
-      <div class="kss-description">
-        <p>Defines that the specified color scheme can be used as a skin when the
-given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
-<p>Usage:</p>
-<pre><code class="lang-scss">$chroma: define-skin(&#39;scheme1&#39;, &#39;.is-scheme1-skin&#39;);
-</code></pre>
-
-      </div>
-    </div>
-
-
-      </section>
       <section id="kssref-skin-define-skins" class="kss-section kss-section--depth-2">
 
     <div class="kss-style">
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-skin-define-skins">
           <span class="kss-title__ref">
-              3.2
+              3.1
             <span class="kss-title__permalink-hash">
                 #skin.define-skins
             </span>
@@ -184,12 +146,14 @@ given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
       <ul class="kss-parameters">
         <li class="kss-parameters__item">
           <code class="kss-parameters__name">$skins</code>
-          <div class="kss-parameters__description">A list of color schemes and their A CSS parent selectors</div>
+          <div class="kss-parameters__description">A map of color schemes and their CSS parent selectors. Each key in the map must be the name of an existing color scheme. The value of each key is the CSS parent selector that triggers the use of the defined scheme instead of the default color scheme. We recommend using a simple CSS selector like <code>.is-CUSTOMNAME-skin</code>.</div>
         </li>
       </ul>
 
       <div class="kss-description">
-        <p>Helper function to define multiple skins at once.</p>
+        <p>Defines one or more color schemes as being a skin. For each of the specified
+color schemes, <code>define-skins()</code> will tell Chroma to use the scheme with the
+corresponding CSS selector when the <code>skin()</code> mixin is used.</p>
 <p>Usage:</p>
 <pre><code class="lang-scss">$chroma: define-skins((
   &#39;scheme1&#39;: &#39;.is-scheme1-skin&#39;,
@@ -209,7 +173,7 @@ given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
       <h2 class="kss-title kss-title--level-2">
         <a class="kss-title__permalink" href="#kssref-skin-skin">
           <span class="kss-title__ref">
-              3.3
+              3.2
             <span class="kss-title__permalink-hash">
                 #skin.skin
             </span>
@@ -221,7 +185,7 @@ given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
       <ul class="kss-parameters">
         <li class="kss-parameters__item">
           <code class="kss-parameters__name">$skins</code>
-          <div class="kss-parameters__description">An optional list of color scheme names and selectors to use instead of the skins defined with <code>define-skin()</code>. The format of this list should match that of the <code>$skins</code> parameter in <code>define-skins()</code>.</div>
+          <div class="kss-parameters__description">An optional list of color scheme names and selectors to use instead of the skins defined with <code>define-skins()</code>. The format of this list should match that of the <code>$skins</code> parameter in <code>define-skins()</code>.</div>
         </li>
       </ul>
 
@@ -234,6 +198,30 @@ given parent selector matches our HTML. See the <code>skin()</code> mixin.</p>
   }
 }
 </code></pre>
+
+      </div>
+    </div>
+
+
+      </section>
+      <section id="kssref-skin-define-skin" class="kss-section kss-section--depth-2">
+
+    <div class="kss-style">
+      <h2 class="kss-title kss-title--level-2">
+        <a class="kss-title__permalink" href="#kssref-skin-define-skin">
+          <span class="kss-title__ref">
+              3.3
+            <span class="kss-title__permalink-hash">
+                #skin.define-skin
+            </span>
+          </span>
+          define-skin($scheme, $selector)
+        </a>
+      </h2>
+
+
+      <div class="kss-description">
+        <p>Deprecated: Will be removed in Chroma 2.0.0. Use <code>define-skins()</code> instead.</p>
 
       </div>
     </div>
