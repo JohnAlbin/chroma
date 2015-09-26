@@ -1,0 +1,17 @@
+@import 'chroma/functions';
+
+$chroma: add-colors((
+  local: #f00,
+));
+
+.test1 {
+  // We need to prevent a user from creating a local variable copy of $chroma.
+  $chroma: add-colors((
+    local: #0f0,
+  ));
+  local: color(local);
+}
+
+.test2 {
+  local: color(local);
+}

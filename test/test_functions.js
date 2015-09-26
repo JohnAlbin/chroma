@@ -142,6 +142,13 @@ describe('@import "chroma/functions";', function() {
         done();
       });
     });
+
+    it('should prevent a user from creating a local $chroma variable', function(done) {
+      sassyTest.renderFixture('define-color-scheme/prevent-local-chroma', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
   });
 
   describe('@function define-default-color-scheme()', function() {
@@ -154,6 +161,13 @@ describe('@import "chroma/functions";', function() {
 
     it('should update the default color scheme’s name', function(done) {
       sassyTest.renderFixture('define-default-color-scheme/name', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should prevent a user from creating a local $chroma variable', function(done) {
+      sassyTest.renderFixture('define-default-color-scheme/prevent-local-chroma', {}, function(error, result, expectedOutput) {
         should.not.exist(error);
         done();
       });
@@ -248,6 +262,13 @@ describe('@import "chroma/functions";', function() {
         done();
       });
     });
+
+    it('should prevent a user from creating a local $chroma variable', function(done) {
+      sassyTest.renderFixture('add-colors/prevent-local-chroma', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        done();
+      });
+    });
   });
 
   describe('@function define-skin()', function() {
@@ -287,6 +308,13 @@ describe('@import "chroma/functions";', function() {
       sassyTest.renderFixture('define-skins/error-selector', {}, function(error, result, expectedOutput) {
         error.should.exist;
         error.message.should.equal('The selector for the default skin was a map, but should be a string.');
+        done();
+      });
+    });
+
+    it('should prevent a user from creating a local $chroma variable', function(done) {
+      sassyTest.renderFixture('define-skins/prevent-local-chroma', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
         done();
       });
     });

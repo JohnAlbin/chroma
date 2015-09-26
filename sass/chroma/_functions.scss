@@ -253,10 +253,12 @@ $chroma: _chroma-init();
     ))
   );
 
-  @return map-merge(
+  $chroma: map-merge(
     $chroma,
     ('schemes': $schemes)
-  );
+  ) !global;
+
+  @return $chroma;
 }
 
 // define-default-color-scheme([$name,] $description)
@@ -302,7 +304,7 @@ $chroma: _chroma-init();
   }
   $CHROMA_DEFAULT_SCHEME: $name !global;
   // Add the default scheme (and the updated schemes) back into $chroma.
-  @return map-merge(
+  $chroma: map-merge(
     $chroma,
     ('schemes': map-merge(
       $schemes,
@@ -311,7 +313,9 @@ $chroma: _chroma-init();
         'parent': false,
       ))
     ))
-  );
+  ) !global;
+
+  @return $chroma;
 }
 
 // add-colors([$scheme,] $colors)

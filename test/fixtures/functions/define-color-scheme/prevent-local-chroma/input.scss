@@ -1,0 +1,11 @@
+@import 'chroma/functions';
+
+.test1 {
+  // We need to prevent a user from creating a local variable copy of $chroma.
+  $chroma: define-color-scheme('local');
+  schemes: map-keys(map-get($chroma, 'schemes'));
+}
+
+.test2 {
+  schemes: map-keys(map-get($chroma, 'schemes'));
+}
