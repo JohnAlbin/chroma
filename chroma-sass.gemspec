@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.homepage     = 'http://github.com/JohnAlbin/chroma'
   spec.rubyforge_project =
 
-  spec.version      = '1.1.1'
-  spec.date         = '2015-09-24'
+  spec.version      = '1.1.2'
+  spec.date         = '2015-09-27'
   spec.licenses     = ['GPL-2']
 
   spec.authors      = ['John Albin Wilkins']
