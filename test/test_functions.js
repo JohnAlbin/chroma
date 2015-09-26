@@ -252,8 +252,16 @@ describe('@import "chroma/functions";', function() {
 
   describe('@function define-skin()', function() {
     it('should add a skin to Chroma', function(done) {
-      sassyTest.renderFixture('define-skin', {}, function(error, result, expectedOutput) {
+      sassyTest.renderFixture('define-skin/skin', {}, function(error, result, expectedOutput) {
         should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should warn the user it is deprecated', function(done) {
+      sassyTest.renderFixture('define-skin/deprecated', {}, function(error, result, expectedOutput) {
+        should.not.exist(error);
+        result.warn[0].should.equal('The define-skin() function is deprecated. Use define-skins() instead.');
         done();
       });
     });
@@ -261,8 +269,24 @@ describe('@import "chroma/functions";', function() {
 
   describe('@function define-skins()', function() {
     it('should add a list of skins to Chroma', function(done) {
-      sassyTest.renderFixture('define-skins', {}, function(error, result, expectedOutput) {
+      sassyTest.renderFixture('define-skins/skin', {}, function(error, result, expectedOutput) {
         should.not.exist(error);
+        done();
+      });
+    });
+
+    it('should error if the color scheme does not exist', function(done) {
+      sassyTest.renderFixture('define-skins/error-scheme', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The color scheme "not-existant" was not found.');
+        done();
+      });
+    });
+
+    it('should error if the selector is not a string', function(done) {
+      sassyTest.renderFixture('define-skins/error-selector', {}, function(error, result, expectedOutput) {
+        error.should.exist;
+        error.message.should.equal('The selector for the default skin was a map, but should be a string.');
         done();
       });
     });

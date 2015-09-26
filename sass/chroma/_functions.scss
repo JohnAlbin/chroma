@@ -437,38 +437,11 @@ $chroma: _chroma-init();
   @return $chroma;
 }
 
-// define-skin($scheme, $selector)
-//
-// Defines that the specified color scheme can be used as a skin when the
-// given parent selector matches our HTML. See the `skin()` mixin.
-//
-// Usage:
-// ```scss
-// $chroma: define-skin('scheme1', '.is-scheme1-skin');
-// ```
-//
-// $scheme   - Name of the color scheme to use when the `$selector` matches our
-//             HTML.
-// $selector - A CSS parent selector that triggers the use of the defined
-//             `$scheme` instead of the default color scheme. We recommend using
-//             a simple CSS selector like `.is-CUSTOMNAME-skin`.
-//
-// Style guide: skin.define-skin
-@function define-skin($scheme, $selector) {
-  $skins: map-merge(
-    map-get($chroma, 'skins'),
-    ($scheme: $selector)
-  );
-
-  @return map-merge(
-    $chroma,
-    ('skins': $skins)
-  );
-}
-
 // define-skins($skins)
 //
-// Helper function to define multiple skins at once.
+// Defines one or more color schemes as being a skin. For each of the specified
+// color schemes, `define-skins()` will tell Chroma to use the scheme with the
+// corresponding CSS selector when the `skin()` mixin is used.
 //
 // Usage:
 // ```scss
@@ -479,12 +452,42 @@ $chroma: _chroma-init();
 // ));
 // ```
 //
-// $skins - A list of color schemes and their A CSS parent selectors
+// $skins - A map of color schemes and their CSS parent selectors. Each key in
+// the map must be the name of an existing color scheme. The value of each key
+// is the CSS parent selector that triggers the use of the defined scheme
+// instead of the default color scheme. We recommend using a simple CSS selector
+// like `.is-CUSTOMNAME-skin`.
 //
 // Style guide: skin.define-skins
 @function define-skins($skins) {
   @each $scheme, $selector in $skins {
-    $chroma: define-skin($scheme, $selector) !global;
+    @if not chroma-has-scheme($scheme) {
+      @error 'The #{$_chroma-spelling} scheme "#{$scheme}" was not found.';
+    }
+    @if type-of($selector) != 'string' {
+      @error 'The selector for the #{$scheme} skin was a #{type-of($selector)}, but should be a string.';
+    }
   }
+
+  $chroma: map-merge(
+    $chroma,
+    ('skins': map-merge(
+      map-get($chroma, 'skins'),
+      $skins
+    ))
+  ) !global;
+
   @return $chroma;
+}
+
+// define-skin($scheme, $selector)
+//
+// Deprecated: Will be removed in Chroma 2.0.0. Use `define-skins()` instead.
+//
+// Weight: 100
+//
+// Style guide: skin.define-skin
+@function define-skin($scheme, $selector) {
+  @warn "The define-skin() function is deprecated. Use define-skins() instead.";
+  @return define-skins(($scheme: $selector));
 }

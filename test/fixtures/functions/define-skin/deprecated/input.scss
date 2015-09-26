@@ -1,0 +1,9 @@
+@import 'chroma';
+
+$chroma: define-skin(default, '.is-default-skin');
+
+.test {
+  @include skin() {
+    property: value;
+  }
+}
