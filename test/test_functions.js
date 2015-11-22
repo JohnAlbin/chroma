@@ -20,7 +20,7 @@ describe('@import "chroma/functions";', function() {
     it('should throw an error on dangerous color keywords', function(done) {
       sassyTest.renderFixture('is-dangerous-color-keyword/die-on-dangerous', {}, function(error, result, expectedOutput) {
         error.should.exist;
-        error.message.should.equal("Sass will convert lightslategray into a hexidecimal value when it uses the \\\"compressed\\\" output style and Chroma will not be able to determine if the original name was lightslategray or lightslategrey. To prevent this error, quote the keyword like this: 'lightslategray'.");
+        error.message.should.equal("Sass will convert lightslategray into a hexidecimal value when it uses the \"compressed\" output style and Chroma will not be able to determine if the original name was lightslategray or lightslategrey. To prevent this error, quote the keyword like this: 'lightslategray'.");
         done();
       });
     });

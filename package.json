@@ -1,33 +1,38 @@
 {
   "name": "chroma-sass",
   "version": "1.1.2",
+  "description": "Chroma is the Sass color manager. Manages color names, variations, and schemes.",
   "homepage": "https://github.com/JohnAlbin/chroma",
-  "author": "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)",
-  "description": "Chroma is the Sass color manager.",
-  "license": "GPL-2.0",
-  "keywords": [
-    "sass",
-    "colors"
-  ],
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "chai": "^3.2.0",
-    "kss": "kss-node/kss-node",
-    "mocha": "^2.2.5",
-    "sassy-test": "^1.0.1"
-  },
-  "scripts": {
-    "test": "mocha",
-    "docs": "kss-node --source sass --source docs --destination gh-pages --homepage homepage.md --title 'Chroma for Sass'"
+  "bugs": {
+    "url": "https://github.com/JohnAlbin/chroma/issues"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/JohnAlbin/chroma.git"
   },
-  "bugs": {
-    "url": "https://github.com/JohnAlbin/chroma/issues"
+  "author": "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)",
+  "keywords": [
+    "sass",
+    "colors"
+  ],
+  "main": "sass/_normalize.scss",
+  "style": "sass/_normalize.scss",
+  "directories": {
+    "lib": "sass",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha",
+    "posttest": "eslint test",
+    "docs": "kss-node --source sass --source docs --destination gh-pages --homepage homepage.md --title 'Chroma for Sass'"
+  },
+  "license": "GPL-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "eslint": "^1.9.0",
+    "kss": "kss-node/kss-node",
+    "mocha": "^2.3.4",
+    "sassy-test": "^2.0.0"
   }
 }

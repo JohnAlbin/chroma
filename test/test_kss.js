@@ -1,7 +1,7 @@
 'use strict';
 
 describe('@import "chroma/colour";', function() {
-  before(function (done) {
+  before(function(done) {
     sassyTest.configurePaths({
       // Path to this suite's fixtures.
       fixtures: path.join(__dirname, 'fixtures/kss')
@@ -9,8 +9,8 @@ describe('@import "chroma/colour";', function() {
     done();
   });
 
-  it('should not be imported with @import "chroma";', function (done) {
-    sassyTest.renderFixture('import', {}, function (error, result, expectedOutput) {
+  it('should not be imported with @import "chroma";', function(done) {
+    sassyTest.renderFixture('import', {}, function(error, result, expectedOutput) {
       should.not.exist(error);
       done();
     });
