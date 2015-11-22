@@ -17,6 +17,9 @@
   ],
   "main": "sass/_normalize.scss",
   "style": "sass/_normalize.scss",
+  "eyeglass": {
+    "exports": "eyeglass-exports.js"
+  },
   "directories": {
     "lib": "sass",
     "test": "test"
