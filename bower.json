@@ -1,19 +1,20 @@
 {
   "name": "chroma",
-  "version": "1.1.2",
-  "homepage": "https://github.com/JohnAlbin/chroma",
-  "authors": [
-    "JohnAlbin <virtually.johnalbin@gmail.com>"
+  "description": "Chroma is the Sass color manager. Manages color names, variations, and schemes.",
+  "main": [
+    "sass/_chroma.scss"
   ],
-  "description": "Chroma is the Sass color manager.",
-  "main": "sass/_chroma.scss",
+  "authors": [
+    "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)"
+  ],
+  "license": "GPL-2.0",
   "keywords": [
     "sass",
     "colors"
   ],
-  "license": "GPL-2.0",
+  "homepage": "https://github.com/JohnAlbin/chroma",
   "ignore": [
-    "bower_components",
+    "**/.*",
     "chroma.gemspec",
     "lib",
     "node_modules",
