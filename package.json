@@ -12,13 +12,15 @@
   },
   "author": "John Albin Wilkins <virtually.johnalbin@gmail.com> (http://john.albin.net/)",
   "keywords": [
+    "eyeglass-module",
     "sass",
     "colors"
   ],
   "main": "sass/_normalize.scss",
   "style": "sass/_normalize.scss",
   "eyeglass": {
-    "exports": "eyeglass-exports.js"
+    "exports": "eyeglass-exports.js",
+    "needs": "^0.7.1"
   },
   "directories": {
     "lib": "sass",
