@@ -4,7 +4,7 @@ Gem::Specification.new do |spec|
   spec.name        = 'chroma-sass'
 
   spec.summary     = %q{Chroma is the Sass color manager.}
-  spec.description = %q{Chroma is the Sass color manager. Manages color names, variations, and schemes.}
+  spec.description = %q{Chroma is the Sass color manager, managing color names, variations, and color schemes.}
 
   spec.homepage    = 'https://github.com/JohnAlbin/chroma'
   spec.rubyforge_project =

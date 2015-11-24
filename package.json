@@ -1,7 +1,7 @@
 {
   "name": "chroma-sass",
   "version": "1.1.2",
-  "description": "Chroma is the Sass color manager. Manages color names, variations, and schemes.",
+  "description": "Chroma is the Sass color manager, managing color names, variations, and color schemes.",
   "homepage": "https://github.com/JohnAlbin/chroma",
   "bugs": {
     "url": "https://github.com/JohnAlbin/chroma/issues"
