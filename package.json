@@ -39,6 +39,6 @@
     "eslint": "^2.4.0",
     "kss": "kss-node/kss-node",
     "mocha": "^2.4.5",
-    "sassy-test": "^3.0.0"
+    "sassy-test": "^3.0.1"
   }
 }
