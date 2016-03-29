@@ -1,0 +1,8 @@
+docs/
+gh-pages/
+lib/
+test/
+.travis.yml
+chroma-sass.gemspec
+gh-pages.sh
+sache.json
