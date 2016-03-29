@@ -16,8 +16,8 @@
     "sass",
     "colors"
   ],
-  "main": "sass/_normalize.scss",
-  "style": "sass/_normalize.scss",
+  "main": "sass/_chroma.scss",
+  "style": "sass/_chroma.scss",
   "eyeglass": {
     "name": "chroma",
     "exports": "eyeglass-exports.js",
