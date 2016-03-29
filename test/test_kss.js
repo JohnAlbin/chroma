@@ -1,17 +1,12 @@
 'use strict';
 
-var sassyTest = new SassyTest();
+var sassyTest = new SassyTest({
+  includePaths: [path.join(__dirname, '../sass')],
+  // Path to this suite's fixtures.
+  fixtures: path.join(__dirname, 'fixtures/kss')
+});
 
 describe('@import "chroma/colour";', function() {
-  before(function(done) {
-    sassyTest.configurePaths({
-      includePaths: [path.join(__dirname, '../sass')],
-      // Path to this suite's fixtures.
-      fixtures: path.join(__dirname, 'fixtures/kss')
-    });
-    done();
-  });
-
   it('should not be imported with @import "chroma";', function() {
     return sassyTest.renderFixture('import', {}).catch(function(error) {
       expect(error).to.not.exist;

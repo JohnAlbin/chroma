@@ -1,17 +1,12 @@
 'use strict';
 
-var sassyTest = new SassyTest();
+var sassyTest = new SassyTest({
+  includePaths: [path.join(__dirname, '../sass')],
+  // Path to this suite's fixtures.
+  fixtures: path.join(__dirname, 'fixtures/internals')
+});
 
 describe('@import "chroma/internals";', function() {
-  before(function(done) {
-    sassyTest.configurePaths({
-      includePaths: [path.join(__dirname, '../sass')],
-      // Path to this suite's fixtures.
-      fixtures: path.join(__dirname, 'fixtures/internals')
-    });
-    done();
-  });
-
   describe('@function chroma-has-scheme()', function() {
     it('should determine if a scheme exists or not', function() {
       return sassyTest.renderFixture('chroma-has-scheme', {}).catch(function(error) {

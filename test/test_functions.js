@@ -1,17 +1,12 @@
 'use strict';
 
-var sassyTest = new SassyTest();
+var sassyTest = new SassyTest({
+  includePaths: [path.join(__dirname, '../sass')],
+  // Path to this suite's fixtures.
+  fixtures: path.join(__dirname, 'fixtures/functions')
+});
 
 describe('@import "chroma/functions";', function() {
-  before(function(done) {
-    sassyTest.configurePaths({
-      includePaths: [path.join(__dirname, '../sass')],
-      // Path to this suite's fixtures.
-      fixtures: path.join(__dirname, 'fixtures/functions')
-    });
-    done();
-  });
-
   describe('@function is-dangerous-color-keyword()', function() {
     it('should recognize dangerous color keywords', function() {
       return sassyTest.renderFixture('is-dangerous-color-keyword/keyword', {}).catch(function(error) {

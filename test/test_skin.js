@@ -1,17 +1,12 @@
 'use strict';
 
-var sassyTest = new SassyTest();
+var sassyTest = new SassyTest({
+  includePaths: [path.join(__dirname, '../sass')],
+  // Path to this suite's fixtures.
+  fixtures: path.join(__dirname, 'fixtures/skin')
+});
 
 describe('@import "chroma/skin";', function() {
-  before(function(done) {
-    sassyTest.configurePaths({
-      includePaths: [path.join(__dirname, '../sass')],
-      // Path to this suite's fixtures.
-      fixtures: path.join(__dirname, 'fixtures/skin')
-    });
-    done();
-  });
-
   describe('@mixin skin()', function() {
     it('should use defined skins', function() {
       return sassyTest.renderFixture('skin/defined-skins', {}).catch(function(error) {
