@@ -26,7 +26,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should throw an error on dangerous colour keywords', function() {
       return sassyTest.renderFixture('is-dangerous-colour-keyword/die-on-dangerous', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal("Sass will convert lightslategray into a hexidecimal value when it uses the \"compressed\" output style and Chroma will not be able to determine if the original name was lightslategray or lightslategrey. To prevent this error, quote the keyword like this: 'lightslategray'.");
@@ -36,7 +36,7 @@ describe('@import "chroma/colour";', function() {
     it('should recognize compressed colour keywords', function() {
       var options = {outputStyle: 'compressed'};
       return sassyTest.renderFixture('is-dangerous-colour-keyword/compressed-output', options).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('Sass has converted a colour keyword into the hexidecimal value, #789, and Chroma was not be able to determine if the original name was lightslategray or lightslategrey. To prevent this error, use quotes around the keyword.');
@@ -73,7 +73,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the colour scheme does not exist', function() {
       return sassyTest.renderFixture('colour/error-no-scheme', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('The colour scheme "404" was not found.');
@@ -82,7 +82,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the colour does not exist', function() {
       return sassyTest.renderFixture('colour/error-no-colour', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('The colour "Earhart" was not found.');
@@ -149,7 +149,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the parent scheme does not exist', function() {
       return sassyTest.renderFixture('define-colour-scheme/error', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('Cannot set the parent of scheme to "child" because the colour scheme "child" was not found.');
@@ -195,7 +195,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the colour reference does not exist', function() {
       return sassyTest.renderFixture('add-colours/error-ref', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('The colour "bermuda" was not found when adding the colour "blue".');
@@ -204,7 +204,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the colour value is not a colour or a string', function() {
       return sassyTest.renderFixture('add-colours/error-value', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('Unexpected value, "0.5", given for colour "green".');
@@ -269,7 +269,7 @@ describe('@import "chroma/colour";', function() {
 
     it('should error if the colour function does not exist', function() {
       return sassyTest.renderFixture('add-colours/error-function', {}).then(function(result) {
-        expect(result.css).to.not.exist;
+        expect(result).to.not.exist;
       }).catch(function(error) {
         expect(error).to.exist;
         expect(error.message).to.equal('The function "nonexistant-function" was not found when adding the colour "green".');
