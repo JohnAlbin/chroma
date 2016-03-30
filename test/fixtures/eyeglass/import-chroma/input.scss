@@ -1,0 +1,9 @@
+@import 'chroma';
+
+$chroma: add-colors((
+  white: #eee,
+));
+
+.test {
+  example: color(white);
+}

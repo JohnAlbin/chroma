@@ -19,8 +19,9 @@
   "main": "sass/_chroma.scss",
   "style": "sass/_chroma.scss",
   "eyeglass": {
+    "sassDir": "sass",
+    "exports": false,
     "name": "chroma",
-    "exports": "eyeglass-exports.js",
     "needs": "*"
   },
   "directories": {
@@ -37,6 +38,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint": "^2.4.0",
+    "eyeglass": "^0.8.3",
     "kss": "kss-node/kss-node",
     "mocha": "^2.4.5",
     "sassy-test": "^3.0.2"
