@@ -41,6 +41,6 @@
     "eyeglass": "^0.8.3",
     "kss": "kss-node/kss-node",
     "mocha": "^2.4.5",
-    "sassy-test": "^3.0.2"
+    "sassy-test": "^3.0.3"
   }
 }
