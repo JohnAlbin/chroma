@@ -88,7 +88,14 @@
         }
         $markup: $markup + '</span>';
         @if length($referenced_by) > 0 {
-          $markup: $markup + ' <span class="#{$reference_class}">This #{$_chroma-spelling} is inherited by: #{inspect($referenced_by)}</span>'
+          $markup: $markup + ' <span class="#{$reference_class}">This #{$_chroma-spelling} is inherited by: ';
+          @for $i from 1 through length($referenced_by) {
+            $markup: $markup + nth($referenced_by, $i);
+            @if ($i != length($referenced_by)) {
+              $markup: $markup + ', ';
+            }
+          }
+          $markup: $markup + '</span>';
         }
         $markup: $markup + '</div>';
       }
