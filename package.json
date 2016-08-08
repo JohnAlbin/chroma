@@ -40,7 +40,7 @@
     "eslint": "^2.9.0",
     "eyeglass": "^0.8.3",
     "kss": "3.0.0-beta.3",
-    "mocha": "^2.4.5",
+    "mocha": "^3.0.2",
     "sassy-test": "^3.0.4"
   }
 }
