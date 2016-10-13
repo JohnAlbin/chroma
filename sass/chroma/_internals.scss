@@ -129,3 +129,19 @@
 @function _is-keyword-string($name) {
   @return if(map-has-key($_chroma-css4-color-keywords-in-strings, $name), true, false);
 }
+
+// _safe-call()
+//
+// LibSass incorrectly throws an error when using call() with an overloaded
+// function; e.g. rgba(). To work-around this bug, we call rgba() directly
+// instead of with call().
+//
+// @TODO: Remove when the fix for https://github.com/sass/libsass/issues/2205 is released.
+//
+// Style guide: internals._safe-call
+@function _safe-call($function, $parameters...) {
+  @if $function == rgba {
+    @return rgba($parameters...);
+  }
+  @return call($function, $parameters...);
+}

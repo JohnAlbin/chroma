@@ -202,7 +202,7 @@ $chroma: _chroma-init();
         $function: map-get(nth($chain, $i), 'function');
         $parameters: map-get(nth($chain, $i), 'parameters');
         $parameters: set-nth($parameters, 1, $value);
-        $value: call($function, $parameters...);
+        $value: _safe-call($function, $parameters...);
       }
     }
     @return $value;
@@ -382,7 +382,7 @@ $chroma: _chroma-init();
     // If the value given is a color, just add it.
     @if type-of($color-value) == 'color' and not (_is-old-libsass() and _is-keyword-string($color-value)) {
       @if $color-function {
-        $color-value: call($color-function, $color-parameters...);
+        $color-value: _safe-call($color-function, $color-parameters...);
       }
       $chroma: _chroma-add-name($scheme, $color-name,
         $value          : $color-value,
@@ -405,7 +405,7 @@ $chroma: _chroma-init();
       $new-value: map-get($referenced-color, 'value');
       @if $color-function {
         $color-parameters: set-nth($color-parameters, 1, $new-value);
-        $new-value: call($color-function, $color-parameters...);
+        $new-value: _safe-call($color-function, $color-parameters...);
       }
       $chroma: _chroma-add-name($scheme, $color-name,
         $value         : $new-value,
