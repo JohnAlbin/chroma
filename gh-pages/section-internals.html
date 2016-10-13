@@ -80,20 +80,26 @@
                 </a>
               </li>
               <li class="kss-nav__menu-item">
-                <a class="kss-nav__menu-link" href="section-internals.html#kssref-internals-chroma-has-color">
+                <a class="kss-nav__menu-link" href="section-internals.html#kssref-internals-_safe-call">
                   <span class="kss-nav__ref ">6.5</span
+                  ><span class="kss-nav__name">_safe-call()</span>
+                </a>
+              </li>
+              <li class="kss-nav__menu-item">
+                <a class="kss-nav__menu-link" href="section-internals.html#kssref-internals-chroma-has-color">
+                  <span class="kss-nav__ref ">6.6</span
                   ><span class="kss-nav__name">chroma-has-color($name [, $scheme])</span>
                 </a>
               </li>
               <li class="kss-nav__menu-item">
                 <a class="kss-nav__menu-link" href="section-internals.html#kssref-internals-chroma-has-scheme">
-                  <span class="kss-nav__ref ">6.6</span
+                  <span class="kss-nav__ref ">6.7</span
                   ><span class="kss-nav__name">chroma-has-scheme($scheme)</span>
                 </a>
               </li>
               <li class="kss-nav__menu-item">
                 <a class="kss-nav__menu-link" href="section-internals.html#kssref-internals-chroma-schemes">
-                  <span class="kss-nav__ref ">6.7</span
+                  <span class="kss-nav__ref ">6.8</span
                   ><span class="kss-nav__name">chroma-schemes()</span>
                 </a>
               </li>
@@ -266,13 +272,44 @@ dangerous color keywords.</li>
         </div>
 
     </section>
+    <section id="kssref-internals-_safe-call" class="kss-section kss-section--depth-2">
+
+      <div class="kss-style">
+        <h2 class="kss-title kss-title--level-2">
+          <a class="kss-title__permalink" href="#kssref-internals-_safe-call">
+            <span class="kss-title__ref">
+              6.5
+              <span class="kss-title__permalink-hash">
+                  #internals._safe-call
+              </span>
+            </span>
+            _safe-call()
+          </a>
+        </h2>
+
+          <div class="kss-description">
+            <p>LibSass incorrectly throws an error when using call() with an overloaded
+function; e.g. rgba(). To work-around this bug, we call rgba() directly
+instead of with call().</p>
+<p>@TODO: Remove when the fix for <a href="https://github.com/sass/libsass/issues/2205">https://github.com/sass/libsass/issues/2205</a> is released.</p>
+
+          </div>
+
+      </div>
+
+
+        <div class="kss-source kss-style">
+          Source: <code>chroma/_internals.scss</code>, line 133
+        </div>
+
+    </section>
     <section id="kssref-internals-chroma-has-color" class="kss-section kss-section--depth-2">
 
       <div class="kss-style">
         <h2 class="kss-title kss-title--level-2">
           <a class="kss-title__permalink" href="#kssref-internals-chroma-has-color">
             <span class="kss-title__ref">
-              6.5
+              6.6
               <span class="kss-title__permalink-hash">
                   #internals.chroma-has-color
               </span>
@@ -301,7 +338,7 @@ Returns false or a string of the scheme name that contains the color.</p>
         <h2 class="kss-title kss-title--level-2">
           <a class="kss-title__permalink" href="#kssref-internals-chroma-has-scheme">
             <span class="kss-title__ref">
-              6.6
+              6.7
               <span class="kss-title__permalink-hash">
                   #internals.chroma-has-scheme
               </span>
@@ -329,7 +366,7 @@ Returns false or a string of the scheme name that contains the color.</p>
         <h2 class="kss-title kss-title--level-2">
           <a class="kss-title__permalink" href="#kssref-internals-chroma-schemes">
             <span class="kss-title__ref">
-              6.7
+              6.8
               <span class="kss-title__permalink-hash">
                   #internals.chroma-schemes
               </span>
