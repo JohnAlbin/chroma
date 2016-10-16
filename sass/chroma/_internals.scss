@@ -132,16 +132,16 @@
 
 // _safe-call()
 //
-// LibSass incorrectly throws an error when using call() with an overloaded
-// function; e.g. rgba(). To work-around this bug, we call rgba() directly
-// instead of with call().
+// LibSass incorrectly throws an error when using the variable argument
+// indicator, ..., with an overloaded function; e.g. rgba(). To work-around this
+// bug, we call rgba() with direct parameters.
 //
 // @TODO: Remove when the fix for https://github.com/sass/libsass/issues/2205 is released.
 //
 // Style guide: internals._safe-call
 @function _safe-call($function, $parameters...) {
   @if $function == rgba {
-    @return rgba($parameters...);
+    @return rgba(nth($parameters, 1), nth($parameters, 2));
   }
   @return call($function, $parameters...);
 }

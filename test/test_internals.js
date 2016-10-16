@@ -68,4 +68,10 @@ describe('@import "chroma/internals";', function() {
       return sassyTest.renderFixture('_is-keyword-string');
     });
   });
+
+  describe('@function _safe-call()', function() {
+    it('should call an overloaded function without error with LibSass before libsass#2205', function() {
+      return sassyTest.renderFixture('_safe-call');
+    });
+  });
 });
