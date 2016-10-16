@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+/* eslint-disable no-process-exit */
+
+'use strict';
+
+function isNode4OrLater() {
+  // All Node.js and IO.js versions since 1.0 have a V8 engine that can
+  // interpret ES2015 (ES6) JavaScript syntax.
+  return /^v(4-9|\d{2,})\.\S+$/.test(process.version);
+}
+
+if (!isNode4OrLater()) {
+  console.error('Running on Node.js ' + process.version + '; skipping eslint tests.');
+  process.exit(1);
+}
