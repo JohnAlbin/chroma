@@ -288,9 +288,9 @@ dangerous color keywords.</li>
         </h2>
 
           <div class="kss-description">
-            <p>LibSass incorrectly throws an error when using call() with an overloaded
-function; e.g. rgba(). To work-around this bug, we call rgba() directly
-instead of with call().</p>
+            <p>LibSass incorrectly throws an error when using the variable argument
+indicator, ..., with an overloaded function; e.g. rgba(). To work-around this
+bug, we call rgba() with direct parameters.</p>
 <p>@TODO: Remove when the fix for <a href="https://github.com/sass/libsass/issues/2205">https://github.com/sass/libsass/issues/2205</a> is released.</p>
 
           </div>
