@@ -5,12 +5,12 @@
 'use strict';
 
 // Checks for "v4." or greater.
-function atLeastNode4() {
+function isModernNode() {
   return /^v([4-9]|\d{2,})\.\S+$/.test(process.version);
 }
 
-if (!atLeastNode4()) {
-  console.error('Running on Node.js ' + process.version + '; skipping eslint tests.');
+if (!isModernNode()) {
+  console.error('Node.js ' + process.version + 'detected; alternate script will be run.');
   // Return a non-zero (false) value to the shell.
   process.exit(1);
 }
