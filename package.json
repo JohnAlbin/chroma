@@ -31,6 +31,7 @@
   "scripts": {
     "test": "mocha",
     "posttest": "eslint .",
+    "test-only": "mocha",
     "docs": "kss-node --source sass --source docs --destination gh-pages --title 'Chroma for Sass'"
   },
   "license": "GPL-2.0",
