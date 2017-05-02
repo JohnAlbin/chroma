@@ -1,5 +1,7 @@
 # About Chroma
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/JohnAlbin/chroma.svg)](https://greenkeeper.io/)
+
 Chroma is a Sass library that manages a project's color names, color variations, and color schemes.
 
 ## USAGE
