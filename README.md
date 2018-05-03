@@ -94,16 +94,12 @@ Install using one of the following methods:
 
 * Install with [npm](http://npmjs.org/): `npm install --save-dev chroma-sass`
 * Install with [Bower](http://bower.io/): `bower install --save-dev chroma`
-* Install with [Ruby Gem](https://rubygems.org/gems/chroma-sass): `gem install chroma-sass`<br>
-  and, if using Compass, add `require "chroma-sass"` to your config.rb file.
-* Install with [Bundler](http://bundler.io/) and Ruby Gem: `bundle inject chroma-sass '~> 1.0'`
 
 See [Chroma’s online documentation](http://johnalbin.github.io/chroma/#installation) for more information.
 
 ## REQUIREMENTS
 
-* LibSass 3.2.5 or later
-* _or_ Ruby Sass 3.4.0 or later
+* LibSass 3.5.0 or later
 
 ## LICENSE
 

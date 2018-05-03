@@ -40,21 +40,10 @@ $chroma: _chroma-init();
 //
 // Style guide: functions.is-dangerous-color-keyword
 @function is-dangerous-color-keyword($name) {
-  // First, double-check if this is a keyword in a string.
-  @if _is-keyword-string($name) {
-    @return false;
-  }
-
   @if type-of($name) == 'color' {
     $lookup: '';
-    @if _is-old-libsass() {
-      // Forcibly convert a color keyword into a string with a "salt".
-      $lookup: "keyword:#{$name}";
-    }
-    @else {
-      // Convert the color to a string.
-      $lookup: inspect($name);
-    }
+    // Convert the color to a string.
+    $lookup: inspect($name);
     // Check if Sass will convert the color into a hex value that we can't
     // convert back to a keyword.
     @if map-has-key($_chroma-dangerous-keywords, $lookup) {
@@ -83,11 +72,6 @@ $chroma: _chroma-init();
 //
 // Style guide: functions.is-color-keyword
 @function is-color-keyword($name) {
-  // First, double-check if this is a keyword in a string.
-  @if _is-keyword-string($name) {
-    @return false;
-  }
-
   // If a real Sass color is given, it is in danger of being converted to a
   // hexadecimal value before we can read the name. And some hex values map to
   // more than one keyword (e.g. gray and grey), so the original name would be
@@ -101,14 +85,8 @@ $chroma: _chroma-init();
   @if type-of($name) == 'color' {
     $lookup: '';
 
-    @if _is-old-libsass() {
-      // Forcibly convert a color keyword into a string with a "salt".
-      $lookup: "keyword:#{$name}";
-    }
-    @else {
-      // Convert the color to a string.
-      $lookup: inspect($name);
-    }
+    // Convert the color to a string.
+    $lookup: inspect($name);
 
     @return if(map-has-key($_chroma-css4-color-keywords, $lookup), map-get($_chroma-css4-color-keywords, $lookup), false);
   }
@@ -202,7 +180,7 @@ $chroma: _chroma-init();
         $function: map-get(nth($chain, $i), 'function');
         $parameters: map-get(nth($chain, $i), 'parameters');
         $parameters: set-nth($parameters, 1, $value);
-        $value: _safe-call($function, $parameters...);
+        $value: call(get-function($function), $parameters...);
       }
     }
     @return $value;
@@ -380,9 +358,9 @@ $chroma: _chroma-init();
       $color-value: nth($color-value, 1);
     }
     // If the value given is a color, just add it.
-    @if type-of($color-value) == 'color' and not (_is-old-libsass() and _is-keyword-string($color-value)) {
+    @if type-of($color-value) == 'color' {
       @if $color-function {
-        $color-value: _safe-call($color-function, $color-parameters...);
+        $color-value: call(get-function($color-function), $color-parameters...);
       }
       $chroma: _chroma-add-name($scheme, $color-name,
         $value          : $color-value,
@@ -393,7 +371,7 @@ $chroma: _chroma-init();
       ) !global;
     }
     // If the value given is a reference to another color...
-    @else if type-of($color-value) == 'string' or (_is-old-libsass() and _is-keyword-string($color-value)) {
+    @else if type-of($color-value) == 'string' {
       $ref: $color-value;
       // Find the referenced color.
       $scheme-of-reference: chroma-has-color($ref, $scheme);
@@ -405,7 +383,7 @@ $chroma: _chroma-init();
       $new-value: map-get($referenced-color, 'value');
       @if $color-function {
         $color-parameters: set-nth($color-parameters, 1, $new-value);
-        $new-value: _safe-call($color-function, $color-parameters...);
+        $new-value: call(get-function($color-function), $color-parameters...);
       }
       $chroma: _chroma-add-name($scheme, $color-name,
         $value         : $new-value,
