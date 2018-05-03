@@ -419,34 +419,3 @@ $_chroma-css4-color-keywords: (
   'yellowgreen': 'yellowgreen',
   '#9acd32': 'yellowgreen',
 );
-
-// libsass before 3.3.0 can't turn color keywords into strings of the same name,
-// so we have to compare map keys using keywords plus a "salt" string.
-//
-// @TODO: Remove when LibSass 3.2.5 support is dropped.
-
-$_chroma-css4-color-keywords-in-strings: ();
-@if type-of('white') == 'color' {
-  // Convert the dangerous color keyword list.
-  $_new-list: ();
-  @each $name, $string in $_chroma-dangerous-keywords {
-    $_new-list: map-merge($_new-list, ("keyword:#{$name}": $string));
-  }
-  $_chroma-dangerous-keywords: $_new-list !global;
-
-  // Convert the dangerous converted color keyword list.
-  $_new-list: ();
-  @each $name, $string in $_chroma-dangerous-converted-keywords {
-    $_new-list: map-merge($_new-list, ("keyword:#{$name}": $string));
-  }
-  $_chroma-dangerous-converted-keywords: $_new-list !global;
-
-  // Convert the css4 color keyword list, but keep a copy around to check for
-  // color keywords in strings.
-  $_chroma-css4-color-keywords-in-strings: $_chroma-css4-color-keywords !global;
-  $_new-list: ();
-  @each $name, $string in $_chroma-css4-color-keywords {
-    $_new-list: map-merge($_new-list, ("keyword:#{$name}": $string));
-  }
-  $_chroma-css4-color-keywords: $_new-list !global;
-}

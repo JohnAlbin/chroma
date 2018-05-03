@@ -21,8 +21,4 @@ for FILENAME in `find . -name "input.scss" -print`; do
   fi
 done
 
-# Of course, the old libsass tests fails.
-git checkout ./internals/_is-old-libsass/output.css;
-git checkout ./internals/_is-keyword-string/output.css;
-
 rm -rf ./.sass-cache;

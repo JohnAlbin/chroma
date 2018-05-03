@@ -1,8 +1,0 @@
-@import 'chroma';
-
-$function: rgba;
-$parameters: #fff, .5;
-
-.test {
-  color: _safe-call($function, $parameters...);
-}
