@@ -143,5 +143,5 @@
   @if $function == rgba {
     @return rgba(nth($parameters, 1), nth($parameters, 2));
   }
-  @return call($function, $parameters...);
+  @return call(get-function($function), $parameters...);
 }
